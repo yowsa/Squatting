@@ -1,4 +1,4 @@
-# squat_mobility!
+# Squat Mobility
 
 A flutter application for squat mobility
 
