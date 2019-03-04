@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SecondRoute2 extends StatelessWidget {
+class InfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +12,7 @@ class SecondRoute2 extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
         },
-          child: Text('Goooo back!'),
+          child: Text('Go back to main screen!'),
         ),
       ),
     );
