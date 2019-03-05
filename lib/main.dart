@@ -4,14 +4,23 @@ import 'welcome_screen.dart';
 import 'routes_widget.dart';
 import 'history_screen.dart';
 
-void main() {
-  runApp(MaterialApp(
+
+
+void main()
+{
+  var new_user = false;
+  if (new_user == true){
+    runApp(MaterialApp(
+        title: 'Navigation Basics',
+        home: WelcomeScreen()));
+  } else {
+    runApp(MaterialApp(
     title: 'Navigation Basics',
-    home: FirstRoute(),
-  ));
+    home: MainScreen()));
+  }
 }
 
-class FirstRoute extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,15 +44,6 @@ class FirstRoute extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class InfoRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: InfoScreen(),
     );
   }
 }
