@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'infoScreen.dart';
-import 'welcomeScreen.dart';
-import 'RoutesWidget.dart';
+import 'info_screen.dart';
+import 'welcome_screen.dart';
+import 'routes_widget.dart';
+import 'history_screen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -17,21 +18,20 @@ class FirstRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text('Main Screen'),
       ),
-      body: Row(
+      body: Column(
         children: <Widget>[
           Expanded(
-              child: RaisedButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => InfoRoute()));
-            },
-            child: Text('hejsan knapp'),
-          )),
+            child: RoutesWidget(screenName: HistoryScreen(), buttonName: 'History Screen'),
+              ),
           Expanded(
             child: RoutesWidget(
               screenName: InfoScreen(),
-              buttonName: 'Testknaaaapp',
+              buttonName: 'Info Screen',
             ),
+          ),
+          Expanded(
+            child: RoutesWidget(
+                screenName: WelcomeScreen(), buttonName: 'Welcome Screen'),
           ),
         ],
       ),
@@ -46,17 +46,4 @@ class InfoRoute extends StatelessWidget {
       child: InfoScreen(),
     );
   }
-}
-
-class WelcomeRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: welcomeRoute(),
-    );
-  }
-}
-
-routes(whichroute) {
-  return whichroute;
 }
