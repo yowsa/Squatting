@@ -4,20 +4,12 @@ import 'welcome_screen.dart';
 import 'routes_widget.dart';
 import 'history_screen.dart';
 
+var newUser = true;
 
-
-void main()
-{
-  var new_user = false;
-  if (new_user == true){
-    runApp(MaterialApp(
-        title: 'Navigation Basics',
-        home: WelcomeScreen()));
-  } else {
-    runApp(MaterialApp(
-    title: 'Navigation Basics',
-    home: MainScreen()));
-  }
+void main() {
+  newUser
+      ? runApp(MaterialApp(title: 'Navigation Basics', home: WelcomeScreen()))
+      : runApp(MaterialApp(title: 'Navigation Basics', home: MainScreen()));
 }
 
 class MainScreen extends StatelessWidget {
@@ -30,8 +22,9 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: RoutesWidget(screenName: HistoryScreen(), buttonName: 'History Screen'),
-              ),
+            child: RoutesWidget(
+                screenName: HistoryScreen(), buttonName: 'History Screen'),
+          ),
           Expanded(
             child: RoutesWidget(
               screenName: InfoScreen(),

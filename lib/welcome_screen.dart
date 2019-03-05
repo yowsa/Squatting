@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -10,9 +11,9 @@ class WelcomeScreen extends StatelessWidget {
       body: Center(
         child: RaisedButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
           },
-          child: Text('Gp back to main screen!'),
+          child: Text('Go to main screen!'),
         ),
       ),
     );
