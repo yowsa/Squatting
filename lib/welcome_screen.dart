@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+Future<void> setVisited() async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setBool('newUser', false);
+
+
+}
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -11,6 +19,7 @@ class WelcomeScreen extends StatelessWidget {
       body: Center(
         child: RaisedButton(
           onPressed: () {
+            setVisited();
             Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
           },
           child: Text('Go to main screen!'),
