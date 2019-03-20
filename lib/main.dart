@@ -5,6 +5,7 @@ import 'routes_widget.dart';
 import 'history_screen.dart';
 //import 'package:redux_persist/redux_persist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'stopwatch_widget.dart';
 
 var newUser2 = true;
 
@@ -38,10 +39,13 @@ class MainScreen extends StatelessWidget {
               buttonName: 'Info Screen',
             ),
           ),
+//          Expanded(
+          //          child: RoutesWidget(
+          //            screenName: WelcomeScreen(), buttonName: 'Welcome Screen'),
+          //    ),
           Expanded(
-            child: RoutesWidget(
-                screenName: WelcomeScreen(), buttonName: 'Welcome Screen'),
-          ),
+            child: StopwatchWidget(),
+          )
         ],
       ),
     );
