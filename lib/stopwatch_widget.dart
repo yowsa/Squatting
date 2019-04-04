@@ -6,15 +6,18 @@ class StopwatchWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     StopwatchState s = StopwatchState();
-    var func = (Timer timer) => s.boop();
-    Timer.periodic(Duration(milliseconds: 100), func);
-    // TODO: implement createState
+    //var func = () => s.boop();
+    testTimer.setCallback(s.boop);
+
+   // Timer.periodic(Duration(milliseconds: 100), func);
     return s;
   }
 }
 
+
+
 class StopwatchState extends State<StopwatchWidget> {
-  String _time = 'time';
+  String _time = testTimer.stopwatchPrint();
 
   void boop() {
     setState(() {
@@ -29,10 +32,12 @@ class StopwatchState extends State<StopwatchWidget> {
       children: [
         FloatingActionButton(
           onPressed: testTimer.stopwatchStart,
+
           backgroundColor: Colors.green,
+          heroTag: 1,
         ),
         Text(_time),
-        FloatingActionButton(onPressed: testTimer.stopwatchStop),
+        FloatingActionButton(onPressed: testTimer.stopwatchStop, heroTag: 0),
         Container(
           color: Colors.blue,
           child: Text('hajja'),

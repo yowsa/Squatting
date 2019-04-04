@@ -2,10 +2,13 @@ import 'dart:async';
 import 'package:intl/intl.dart';
 
 // TODO: only needed for the sleep function for testing
-import 'dart:io';
+//import 'dart:io';
+//import 'stopwatch_widget.dart';
 
 class StopwatchTimer {
   Stopwatch myStopwatch;
+
+  var callback;
 
   Timer timer;
 
@@ -17,22 +20,21 @@ class StopwatchTimer {
   updateTime(Timer theTimer) {
     String printTime = DateFormat("mm:ss:S").format(
         DateTime.fromMillisecondsSinceEpoch(myStopwatch.elapsedMilliseconds));
-    print(printTime.substring(0, 8));
+    if (callback != null) callback();
 
     //TODO: only here for testing mode, remove once a stop button is implemented
-    if (myStopwatch.elapsed >= Duration(seconds: 5)) {
-      theTimer.cancel();
-      print(myStopwatch.elapsed.toString() + 'hejsan');
-      myStopwatch.reset();
-      print(myStopwatch.elapsed.toString() + 'hejsan2');
-    }
+   // if (myStopwatch.elapsed >= Duration(seconds: 5)) {
+   //   theTimer.cancel();
+   //   print(myStopwatch.elapsed.toString() + 'hejsan');
+   //   myStopwatch.reset();
+   //   print(myStopwatch.elapsed.toString() + 'hejsan2');
+   // }
   }
 
   // printing the start time
   stopwatchPrint() {
     String printStartTime = DateFormat("mm:ss:S").format(
         DateTime.fromMillisecondsSinceEpoch(myStopwatch.elapsedMilliseconds));
-    print(printStartTime.substring(0, 8));
     return printStartTime.substring(0, 8);
   }
 
@@ -46,22 +48,31 @@ class StopwatchTimer {
   // stops the timer
   stopwatchStop() {
     myStopwatch.stop();
+    timer.cancel();
   }
 
   stopwatchReset() {
     myStopwatch.reset();
     print(myStopwatch.elapsed);
   }
+
+  setCallback(cb) {
+    this.callback = cb;
+  }
+
+
 }
+
 
 //TODO: test section, this would be what goes into the actual app using the timer
+
 var testTimer = StopwatchTimer();
 
-main() {
+//main() {
   // printing the start time
-  testTimer.stopwatchPrint();
+//  testTimer.stopwatchPrint();
   // added for testing
-  sleep(Duration(seconds: 2));
+//  sleep(Duration(seconds: 2));
   // starting the actual timer
-  testTimer.stopwatchStart();
-}
+//  testTimer.stopwatchStart();
+//}

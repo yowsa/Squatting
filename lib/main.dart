@@ -6,6 +6,7 @@ import 'history_screen.dart';
 //import 'package:redux_persist/redux_persist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'stopwatch_widget.dart';
+import 'track_time_screen.dart';
 
 var newUser2 = true;
 
@@ -39,13 +40,12 @@ class MainScreen extends StatelessWidget {
               buttonName: 'Info Screen',
             ),
           ),
-//          Expanded(
-          //          child: RoutesWidget(
-          //            screenName: WelcomeScreen(), buttonName: 'Welcome Screen'),
-          //    ),
           Expanded(
-            child: StopwatchWidget(),
-          )
+            child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),
+          ),
+         // Expanded(
+         //   child: StopwatchWidget(),
+          //)
         ],
       ),
     );
