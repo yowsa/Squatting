@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'stopwatch_timer_class.dart';
-import 'dart:async';
+import 'package:flutter/cupertino.dart';
+//import 'dart:async';
 
 class StopwatchWidget extends StatefulWidget {
   @override
@@ -9,12 +10,10 @@ class StopwatchWidget extends StatefulWidget {
     //var func = () => s.boop();
     testTimer.setCallback(s.boop);
 
-   // Timer.periodic(Duration(milliseconds: 100), func);
+    // Timer.periodic(Duration(milliseconds: 100), func);
     return s;
   }
 }
-
-
 
 class StopwatchState extends State<StopwatchWidget> {
   String _time = testTimer.stopwatchPrint();
@@ -32,7 +31,6 @@ class StopwatchState extends State<StopwatchWidget> {
       children: [
         FloatingActionButton(
           onPressed: testTimer.stopwatchStart,
-
           backgroundColor: Colors.green,
           heroTag: 1,
         ),
@@ -42,7 +40,6 @@ class StopwatchState extends State<StopwatchWidget> {
           color: Colors.blue,
           child: Text('hajja'),
         ),
-        Text('hejsan'),
         Text('hojabaaaaa'),
       ],
     );

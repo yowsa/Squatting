@@ -5,8 +5,9 @@ import 'routes_widget.dart';
 import 'history_screen.dart';
 //import 'package:redux_persist/redux_persist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'stopwatch_widget.dart';
+//import 'stopwatch_widget.dart';
 import 'track_time_screen.dart';
+import 'time_picker_widget.dart';
 
 var newUser2 = true;
 
@@ -43,6 +44,9 @@ class MainScreen extends StatelessWidget {
           Expanded(
             child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),
           ),
+         Expanded(
+           child: TimerPickerWidget(),
+         ),
          // Expanded(
          //   child: StopwatchWidget(),
           //)
