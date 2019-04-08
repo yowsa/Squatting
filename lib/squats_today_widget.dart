@@ -15,7 +15,7 @@ class SquatsTodayWidget extends StatefulWidget {
 
 
 class SquatsTodayState extends State<SquatsTodayWidget> {
-  String todaysSquats = (allSquats['squats']['datum'].toString());
+  var todaysSquats =  allSquats['squats']['datum'];
 
   void loadState() {
     setState(() {
@@ -30,7 +30,7 @@ class SquatsTodayState extends State<SquatsTodayWidget> {
     return Column(
       children: <Widget>[
         Expanded(
-          child: Text(todaysSquats),
+          child: Text(todaysSquats.toString()),
         )
       ],
     );

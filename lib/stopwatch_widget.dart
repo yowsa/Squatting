@@ -28,16 +28,15 @@ class StopwatchState extends State<StopwatchWidget> {
     return Row(
       children: [
         FloatingActionButton(
+          child: Icon(Icons.play_arrow),
           onPressed: testTimer.stopwatchStart,
           backgroundColor: Colors.green,
           heroTag: 1,
         ),
         Text(_time),
-        FloatingActionButton(onPressed: testTimer.stopwatchStop, heroTag: 0),
-        Container(
-          color: Colors.blue,
-          child: Text('hajja'),
-        ),
+        FloatingActionButton(
+            child: Icon(Icons.stop),
+            onPressed: testTimer.stopwatchStop, heroTag: 0),
       ],
     );
   }

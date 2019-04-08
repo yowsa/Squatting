@@ -5,7 +5,9 @@ import 'squats_today_widget.dart';
 // Global variable that holds all squats (dict/map)
 
 Map<String, dynamic> allSquats = {
-  "squats": {"datum" : [1,4,3]},
+  "squats": {
+    "datum": [1, 4, 3]
+  },
 };
 
 // function that loads saved items at start
@@ -39,7 +41,6 @@ Future<bool> saveSquats() async {
   print("hejsan");
   return true;
 }
-
 
 addSquat(squatValue) {
   allSquats['squats']['datum'].add(squatValue);

@@ -52,12 +52,6 @@ class MainScreen extends StatelessWidget {
           Expanded(
             child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),
           ),
-         Expanded(
-           child: RoutesWidget(screenName: TimerPickerWidget(), buttonName: 'Timer Picker'),
-         ),
-         // Expanded(
-         //   child: StopwatchWidget(),
-          //)
         ],
       ),
     );

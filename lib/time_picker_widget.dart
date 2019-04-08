@@ -30,15 +30,9 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: FloatingActionButton(heroTag: 2,onPressed:() {
-              Navigator.pop(context, MaterialPageRoute(builder: (context) => MainScreen()));
-            }),
-          ),
-          Expanded(
-            child: FloatingActionButton(heroTag: 3,onPressed:() => addSquat(initialTimer)),
+            child: FloatingActionButton(child: Icon(Icons.add),heroTag: 3,onPressed:() => addSquat(initialTimer)),
           ),
           Expanded(child: time()),
-          Text('hejsan'),
         ],
       ),
     );
