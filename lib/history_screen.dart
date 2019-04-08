@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'save_squats.dart';
+
+tesssst() {
+  List myList = <Widget>[];
+  for (int i in allSquats['squats']['datum']) {
+    myList.add(Text(i.toString()));
+  }
+  return Column(children: myList);
+}
+
 
 class HistoryScreen extends StatelessWidget {
   @override
@@ -7,13 +17,17 @@ class HistoryScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('History Screen'),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back to main screen!'),
-        ),
+      body: Column(
+        children: <Widget>[
+          RaisedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Go back to main screen!'),
+          ),
+          tesssst(),
+        ],
+
       ),
     );
   }

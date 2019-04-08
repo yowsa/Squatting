@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'main.dart';
+import 'save_squats.dart';
 
 class TimerPickerWidget extends StatefulWidget {
   @override
@@ -25,8 +27,16 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
+      body: Column(
         children: <Widget>[
+          Expanded(
+            child: FloatingActionButton(heroTag: 2,onPressed:() {
+              Navigator.pop(context, MaterialPageRoute(builder: (context) => MainScreen()));
+            }),
+          ),
+          Expanded(
+            child: FloatingActionButton(heroTag: 3,onPressed:() => addSquat(initialTimer)),
+          ),
           Expanded(child: time()),
           Text('hejsan'),
         ],

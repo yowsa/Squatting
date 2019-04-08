@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'track_time_screen.dart';
 import 'time_picker_widget.dart';
 import 'save_squats.dart';
+import 'squats_today_widget.dart';
 
 var newUser2 = true;
 
@@ -44,6 +45,9 @@ class MainScreen extends StatelessWidget {
               screenName: InfoScreen(),
               buttonName: 'Info Screen',
             ),
+          ),
+          Expanded(
+            child: SquatsTodayWidget()
           ),
           Expanded(
             child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),

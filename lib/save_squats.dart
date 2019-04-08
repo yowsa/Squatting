@@ -1,10 +1,11 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'squats_today_widget.dart';
 
 // Global variable that holds all squats (dict/map)
 
-Map<String, List<dynamic>> allSquats = {
-  "squats": [1],
+Map<String, dynamic> allSquats = {
+  "squats": {"datum" : [1,4,3]},
 };
 
 // function that loads saved items at start
@@ -16,7 +17,7 @@ loadSquats() async {
   var allSquats3 = prefs.getString('squats');
 
   var stringToMapSquats = decoder.convert(allSquats3);
-  allSquats = Map<String, List<dynamic>>.from(stringToMapSquats);
+  allSquats = Map<String, dynamic>.from(stringToMapSquats);
   print("start of decoder");
   print(allSquats);
 }
@@ -26,7 +27,7 @@ loadSquats() async {
 Future<bool> saveSquats() async {
   print(allSquats);
   var encoder = JsonEncoder();
-  allSquats['squats'].add(1);
+  allSquats['squats']['datum'].add(1);
   String savedSquatsString = encoder.convert(allSquats);
   print(savedSquatsString);
 
@@ -37,4 +38,10 @@ Future<bool> saveSquats() async {
   print(savedSquatsString);
   print("hejsan");
   return true;
+}
+
+
+addSquat(squatValue) {
+  allSquats['squats']['datum'].add(squatValue);
+  print(allSquats);
 }

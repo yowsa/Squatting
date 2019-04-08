@@ -9,8 +9,6 @@ class StopwatchWidget extends StatefulWidget {
     StopwatchState s = StopwatchState();
     //var func = () => s.boop();
     testTimer.setCallback(s.boop);
-
-    // Timer.periodic(Duration(milliseconds: 100), func);
     return s;
   }
 }
@@ -40,7 +38,6 @@ class StopwatchState extends State<StopwatchWidget> {
           color: Colors.blue,
           child: Text('hajja'),
         ),
-        Text('hojabaaaaa'),
       ],
     );
   }
