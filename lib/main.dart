@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 //import 'stopwatch_widget.dart';
 import 'track_time_screen.dart';
 import 'time_picker_widget.dart';
+import 'save_squats.dart';
 
 var newUser2 = true;
 
@@ -20,6 +21,9 @@ void main() async {
   newUser
       ? runApp(MaterialApp(title: 'Navigation Basics', home: WelcomeScreen()))
       : runApp(MaterialApp(title: 'Navigation Basics', home: MainScreen()));
+
+  Future<bool> x = saveSquats();
+  x.then((unused) => loadSquats());
 }
 
 class MainScreen extends StatelessWidget {
@@ -45,7 +49,7 @@ class MainScreen extends StatelessWidget {
             child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),
           ),
          Expanded(
-           child: TimerPickerWidget(),
+           child: RoutesWidget(screenName: TimerPickerWidget(), buttonName: 'Timer Picker'),
          ),
          // Expanded(
          //   child: StopwatchWidget(),

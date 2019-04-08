@@ -9,24 +9,28 @@ class TimerPickerWidget extends StatefulWidget {
 class _TimerPickerWidgetState extends State<TimerPickerWidget> {
   Duration initialTimer = Duration();
 
+  Widget time() {
+    return CupertinoTimerPicker(
+        mode: CupertinoTimerPickerMode.ms,
+        minuteInterval: 1,
+        secondInterval: 1,
+        initialTimerDuration: initialTimer,
+        onTimerDurationChanged: (Duration changedTimer) {
+          setState(() {
+            initialTimer = changedTimer;
+          });
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Row(
-      children: <Widget>[
-        Container(
-          child: CupertinoTimerPicker(
-              mode: CupertinoTimerPickerMode.ms,
-              minuteInterval: 1,
-              secondInterval: 1,
-              initialTimerDuration: initialTimer,
-              onTimerDurationChanged: (Duration changedTimer) {
-                setState(() {
-                  initialTimer = changedTimer;
-                });
-              }),
-        )
-      ],
+    return Scaffold(
+      body: Row(
+        children: <Widget>[
+          Expanded(child: time()),
+          Text('hejsan'),
+        ],
+      ),
     );
   }
 }
