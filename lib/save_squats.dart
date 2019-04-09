@@ -10,6 +10,13 @@ Map<String, dynamic> allSquats = {
   },
 };
 
+sumSquats() {
+  int todaySum = 0;
+  for (int i in allSquats['squats']['datum'])
+    todaySum += i.toInt();
+  return todaySum;
+}
+
 // function that loads saved items at start
 
 loadSquats() async {

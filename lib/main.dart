@@ -46,9 +46,7 @@ class MainScreen extends StatelessWidget {
               buttonName: 'Info Screen',
             ),
           ),
-          Expanded(
-            child: SquatsTodayWidget()
-          ),
+          Text(sumSquats().toString()),
           Expanded(
             child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),
           ),
