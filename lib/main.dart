@@ -23,11 +23,11 @@ void main() async {
       ? runApp(MaterialApp(title: 'Navigation Basics', home: WelcomeScreen()))
       : runApp(MaterialApp(title: 'Navigation Basics', home: MainScreen()));
 
-  Future<bool> x = saveSquats();
-  x.then((unused) => loadSquats());
+  loadSquats();
 }
 
 class MainScreen extends StatelessWidget {
+  Modal modal = Modal();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +46,13 @@ class MainScreen extends StatelessWidget {
               buttonName: 'Info Screen',
             ),
           ),
-          Text(sumSquats().toString()),
+          Text(allSquats.toString()),
           Expanded(
             child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),
           ),
+          FloatingActionButton(
+            onPressed: () => modal.mainBottomSheet(context),
+          )
         ],
       ),
     );

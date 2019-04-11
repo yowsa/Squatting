@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'save_squats.dart';
+import 'track_time_screen.dart';
 
 class TimerPickerWidget extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class TimerPickerWidget extends StatefulWidget {
 }
 
 class _TimerPickerWidgetState extends State<TimerPickerWidget> {
+  Modal modal = Modal();
   Duration initialTimer = Duration();
 
   Widget time() {
@@ -33,6 +35,10 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
             child: FloatingActionButton(child: Icon(Icons.add),heroTag: 3,onPressed:() => addSquat(initialTimer)),
           ),
           Expanded(child: time()),
+          FloatingActionButton(heroTag: 10,
+            onPressed: () => modal.mainBottomSheet(context),
+          ),
+
         ],
       ),
     );
