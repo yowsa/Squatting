@@ -63,7 +63,7 @@ class TrackTimeScreen extends StatelessWidget {
             child: FloatingActionButton(
                 child: Icon(Icons.add),
                 heroTag: 4,
-                onPressed: () => addSquat(testTimer.stopwatchPrint())),
+                onPressed: () => addSquat(testTimer.stopwatchValue())),
           ),
           Expanded(
             child: StopwatchWidget(),

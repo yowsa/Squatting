@@ -21,25 +21,31 @@ sumSquats() {
   );
   var today = DateTime.now().toString().substring(0,10); // is it better to make this a universal variable since it's also used in the addsquat function futher down
   if (allSquats['squats'].containsKey(today)){
-    for (Duration dur in allSquats['squats'][today]) {
+    for (int seconds in allSquats['squats'][today]) {
+      Duration dur;
+      dur = Duration(seconds: seconds);
       todaysTotal += dur;
       return todaysTotal;
+
     }
   } else {
     return todaysTotal;
   }
+  print(todaysTotal);
 }
 
 
 // function that loads saved items at start
 
 loadSquats() async {
+//  int squatValueDuration =
+
   var decoder = JsonDecoder();
 
   var prefs = await SharedPreferences.getInstance();
-  var allSquats3 = prefs.getString('squats');
+  var allSavedSquats = prefs.getString('squats');
 
-  var stringToMapSquats = decoder.convert(allSquats3);
+  var stringToMapSquats = decoder.convert(allSavedSquats);
   allSquats = Map<String, dynamic>.from(stringToMapSquats);
 }
 
@@ -57,14 +63,19 @@ Future<bool> saveSquats() async {
 }
 
 addSquat(squatValue) {
+  int squatValueSeconds = squatValue.inSeconds;
+  Duration hej = Duration(seconds: squatValueSeconds);
+  print (hej);
   var today = DateTime.now().toString().substring(0,10);
   if (allSquats['squats'].containsKey(today)){
-    allSquats['squats'][today].add(squatValue);
+    allSquats['squats'][today].add(squatValueSeconds);
     print(squatValue.runtimeType);
   } else {
-    allSquats['squats'][today] = [squatValue,];
+    allSquats['squats'][today] = [squatValueSeconds,];
     print(squatValue.runtimeType);
   }
   print(allSquats);
   saveSquats();
+  sumSquats();
+  print(sumSquats());
 }

@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'package:intl/intl.dart';
 
-// TODO: only needed for the sleep function for testing
-//import 'dart:io';
-//import 'stopwatch_widget.dart';
 
 class StopwatchTimer {
   Stopwatch myStopwatch;
@@ -18,24 +15,31 @@ class StopwatchTimer {
 
   // printing the current time of the timer
   updateTime(Timer theTimer) {
+  /*
+    don't believe this code is even used so commenting out until I decide to delete it
+
     String printTime = DateFormat("mm:ss:S").format(
-        DateTime.fromMillisecondsSinceEpoch(myStopwatch.elapsedMilliseconds));
+     DateTime.fromMillisecondsSinceEpoch(myStopwatch.elapsedMilliseconds));
+        */
     if (callback != null) callback();
 
-    //TODO: only here for testing mode, remove once a stop button is implemented
-   // if (myStopwatch.elapsed >= Duration(seconds: 5)) {
-   //   theTimer.cancel();
-   //   print(myStopwatch.elapsed.toString() + 'hejsan');
-   //   myStopwatch.reset();
-   //   print(myStopwatch.elapsed.toString() + 'hejsan2');
-   // }
   }
 
   // printing the start time
   stopwatchPrint() {
+    Duration startTime = Duration(
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+    );
     String printStartTime = DateFormat("mm:ss:S").format(
         DateTime.fromMillisecondsSinceEpoch(myStopwatch.elapsedMilliseconds));
     return printStartTime.substring(0, 8);
+  }
+
+  stopwatchValue () {
+    Duration stopwatchValue = Duration(milliseconds: myStopwatch.elapsedMilliseconds);
+    return stopwatchValue;
   }
 
   // starting the timer and updating the current elapsed time every 100th millisecond
@@ -67,12 +71,3 @@ class StopwatchTimer {
 //TODO: test section, this would be what goes into the actual app using the timer
 
 var testTimer = StopwatchTimer();
-
-//main() {
-  // printing the start time
-//  testTimer.stopwatchPrint();
-  // added for testing
-//  sleep(Duration(seconds: 2));
-  // starting the actual timer
-//  testTimer.stopwatchStart();
-//}
