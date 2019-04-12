@@ -6,29 +6,28 @@ import 'package:intl/intl.dart';
 // Global variable that holds all squats (dict/map)
 
 Map<String, dynamic> allSquats = {
-  "squats": {
-  },
+  "squats": {},
 };
 
 // function that check the total sum of todays squats from the allSquats variable
 
-sumSquats() {
-  Duration todaysTotal = Duration(
+sumSquats(day) {
+  Duration dayTotal = Duration(
     milliseconds: 0,
     minutes: 0,
     seconds: 0,
   );
-  var today = DateTime.now().toString().substring(0,
-      10); // is it better to make this a universal variable since it's also used in the addsquat function futher down
-  if (allSquats['squats'].containsKey(today)) {
-    for (int seconds in allSquats['squats'][today]) {
+  // var today = DateTime.now().toString().substring(0,10);
+// is it better to make this a universal variable since it's also used in the addsquat function futher down
+  if (allSquats['squats'].containsKey(day)) {
+    for (int seconds in allSquats['squats'][day]) {
       Duration dur;
       dur = Duration(seconds: seconds);
-      todaysTotal += dur;
+      dayTotal += dur;
     }
-    return todaysTotal;
+    return dayTotal;
   } else {
-    return todaysTotal;
+    return dayTotal;
   }
 }
 
@@ -71,8 +70,13 @@ addSquat(squatValue) {
   }
   print(allSquats);
   // if I want to remove a date, use the code below
-  //allSquats['squats'].remove('2019-04-12');
+ // allSquats['squats'].remove('2019-04-10');
+
+//If you want to add a date with value use code below
+
+  //allSquats['squats']['2019-04-11'] = [4, 5, 6, 7];
+
   saveSquats();
-  sumSquats();
-  print(sumSquats());
+  String date = '2019-04-09';
+  print(sumSquats(date));
 }
