@@ -7,7 +7,6 @@ import 'package:intl/intl.dart';
 
 Map<String, dynamic> allSquats = {
   "squats": {
-    "datum": [1, 4, 3]
   },
 };
 
@@ -19,21 +18,19 @@ sumSquats() {
     minutes: 0,
     seconds: 0,
   );
-  var today = DateTime.now().toString().substring(0,10); // is it better to make this a universal variable since it's also used in the addsquat function futher down
-  if (allSquats['squats'].containsKey(today)){
+  var today = DateTime.now().toString().substring(0,
+      10); // is it better to make this a universal variable since it's also used in the addsquat function futher down
+  if (allSquats['squats'].containsKey(today)) {
     for (int seconds in allSquats['squats'][today]) {
       Duration dur;
       dur = Duration(seconds: seconds);
       todaysTotal += dur;
-      return todaysTotal;
-
     }
+    return todaysTotal;
   } else {
     return todaysTotal;
   }
-  print(todaysTotal);
 }
-
 
 // function that loads saved items at start
 
@@ -64,17 +61,17 @@ Future<bool> saveSquats() async {
 
 addSquat(squatValue) {
   int squatValueSeconds = squatValue.inSeconds;
-  Duration hej = Duration(seconds: squatValueSeconds);
-  print (hej);
-  var today = DateTime.now().toString().substring(0,10);
-  if (allSquats['squats'].containsKey(today)){
+  var today = DateTime.now().toString().substring(0, 10);
+  if (allSquats['squats'].containsKey(today)) {
     allSquats['squats'][today].add(squatValueSeconds);
-    print(squatValue.runtimeType);
   } else {
-    allSquats['squats'][today] = [squatValueSeconds,];
-    print(squatValue.runtimeType);
+    allSquats['squats'][today] = [
+      squatValueSeconds,
+    ];
   }
   print(allSquats);
+  // if I want to remove a date, use the code below
+  //allSquats['squats'].remove('2019-04-12');
   saveSquats();
   sumSquats();
   print(sumSquats());

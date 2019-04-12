@@ -3,11 +3,24 @@ import 'save_squats.dart';
 
 tesssst() {
   List myList = <Widget>[];
-  for (int i in allSquats['squats']['datum']) {
+  for (String i in allSquats['squats']) {
     myList.add(Text(i.toString()));
   }
   return Column(children: myList);
 }
+
+history() {
+  Map<String, dynamic> historyView = {
+    "history": {
+    },
+  };
+
+
+  //return Column(children: historyView);
+
+
+}
+
 
 
 class HistoryScreen extends StatelessWidget {
