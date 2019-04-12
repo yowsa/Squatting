@@ -27,11 +27,6 @@ class StopwatchTimer {
 
   // printing the start time
   stopwatchPrint() {
-    Duration startTime = Duration(
-      minutes: 0,
-      seconds: 0,
-      milliseconds: 0,
-    );
     String printStartTime = DateFormat("mm:ss:S").format(
         DateTime.fromMillisecondsSinceEpoch(myStopwatch.elapsedMilliseconds));
     return printStartTime.substring(0, 8);

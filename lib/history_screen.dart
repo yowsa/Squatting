@@ -10,13 +10,11 @@ tesssst() {
 }
 
 history() {
-  Map<String, dynamic> historyView = {
-    "history": {
-    },
-  };
-
-
-  //return Column(children: historyView);
+  List historyView = <Widget> [];
+  allSquats['squats'].forEach((k, v) => historyView.add('hej'));
+  print(historyView);
+  return historyView;
+ // return Column(children: historyView);
 
 
 }
@@ -38,7 +36,7 @@ class HistoryScreen extends StatelessWidget {
             },
             child: Text('Go back to main screen!'),
           ),
-          tesssst(),
+          history(),
         ],
 
       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'main.dart';
 import 'save_squats.dart';
 import 'track_time_screen.dart';
 

@@ -7,9 +7,7 @@ import 'history_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'stopwatch_widget.dart';
 import 'track_time_screen.dart';
-import 'time_picker_widget.dart';
 import 'save_squats.dart';
-import 'squats_today_widget.dart';
 
 var newUser2 = true;
 
