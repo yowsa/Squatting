@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'save_squats.dart';
 
-tesssst() {
-  List myList = <Widget>[];
-  for (String i in allSquats['squats']) {
-    myList.add(Text(i.toString()));
-  }
-  return Column(children: myList);
-}
-
 history() {
   List historyView = <Widget> [];
-  allSquats['squats'].forEach((k, v) => historyView.add('hej'));
-  print(historyView);
-  return historyView;
- // return Column(children: historyView);
+  List historySum = <Widget> [];
+  allSquats['squats'].forEach((k, v) => historyView.add(Text(k)));
+ historyView.sort((a,b) => a.data.compareTo(b.data));
+ historyView.forEach((f) => historySum.add(Text(sumSquats(f.data).toString())));
+  return Row(children: <Widget>[
+      Column(children: historyView),
+    Column(children: historySum),
+  ],);
 
 
 }
@@ -37,6 +33,7 @@ class HistoryScreen extends StatelessWidget {
             child: Text('Go back to main screen!'),
           ),
           history(),
+
         ],
 
       ),

@@ -6,9 +6,37 @@ import 'time_picker_widget.dart';
 import 'save_squats.dart';
 import 'stopwatch_timer_class.dart';
 
+
+class ModalSheet extends StatefulWidget {
+  @override
+  ModalSheetState createState() => ModalSheetState();
+}
+
+class ModalSheetState extends State<ModalSheet>{
+  Modal modal = Modal();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          FloatingActionButton(heroTag: 10,
+            onPressed: () => modal.mainBottomSheet(context),
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
 class Modal {
   mainBottomSheet(BuildContext context) {
-    showBottomSheet(
+    showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
           return Column(
@@ -27,6 +55,9 @@ class Modal {
                 onTap: () {
                   Navigator.pop(context);
                 },
+              ),
+              Expanded(
+                child: StopwatchWidget(),
               ),
 
             ],

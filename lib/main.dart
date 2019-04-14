@@ -44,12 +44,12 @@ class MainScreen extends StatelessWidget {
               buttonName: 'Info Screen',
             ),
           ),
-          Text(allSquats.toString()),
+          Text(sumSquats('2019-04-14').toString()),
           Expanded(
             child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),
           ),
-          FloatingActionButton(
-            onPressed: () => modal.mainBottomSheet(context),
+          Expanded (
+            child: ModalSheet(),
           )
         ],
       ),

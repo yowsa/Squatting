@@ -75,6 +75,6 @@ addSquat(squatValue) {
   //allSquats['squats']['2019-04-11'] = [4, 5, 6, 7];
 
   saveSquats();
-  String date = '2019-04-09';
+  String date = DateTime.now().toString().substring(0,10);
   print(sumSquats(date));
 }

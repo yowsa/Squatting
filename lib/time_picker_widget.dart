@@ -34,9 +34,6 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
             child: FloatingActionButton(child: Icon(Icons.add),heroTag: 3,onPressed:() => addSquat(initialTimer)),
           ),
           Expanded(child: time()),
-          FloatingActionButton(heroTag: 10,
-            onPressed: () => modal.mainBottomSheet(context),
-          ),
 
         ],
       ),
