@@ -25,7 +25,7 @@ void main() async {
 }
 
 class MainScreen extends StatelessWidget {
-  Modal modal = Modal();
+  final Modal modal = Modal();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +44,7 @@ class MainScreen extends StatelessWidget {
               buttonName: 'Info Screen',
             ),
           ),
-          Text(sumSquats('2019-04-14').toString()),
+          Text(sumSquats(DateTime.now()).toString()),
           Expanded(
             child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),
           ),
