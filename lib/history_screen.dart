@@ -7,8 +7,11 @@ history() {
   List historySum = <Widget>[];
   allSquats['squats'].forEach((k, v) => historyView.add(Text(k)));
   historyView.sort((a, b) => b.data.compareTo(a.data));
-  historyView
-      .forEach((f) => historySum.add(Text(sumSquats(f.data).toString())));
+  historyView.forEach((f) {
+    //Duration dailyDur = sumSquats(f.data);
+    //int dailyDurInt = dailyDur.inMinutes;
+    historySum.add(Text(sumSquats(f.data).toString()));
+  });
   return Row(
     children: <Widget>[
       Column(children: historyView),
@@ -30,7 +33,7 @@ historyList() {
   while (startDate.add(Duration(days: 1)).isBefore(endDate)) {
     if (dateList.contains(startDate)) {
     } else {
-     allSquats['squats'][dateFormat.format(startDate).toString()] = [];
+      allSquats['squats'][dateFormat.format(startDate).toString()] = [];
       dateList.add(startDate);
     }
     startDate = startDate.add(Duration(days: 1));

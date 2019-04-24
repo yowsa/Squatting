@@ -15,17 +15,17 @@ sumSquats(day) {
     minutes: 0,
     seconds: 0,
   );
-  // var today = DateTime.now().toString().substring(0,10);
-// is it better to make this a universal variable since it's also used in the addsquat function futher down
+  int total = dayTotal.inMinutes;
   if (allSquats['squats'].containsKey(day)) {
     for (int seconds in allSquats['squats'][day]) {
       Duration dur;
       dur = Duration(seconds: seconds);
       dayTotal += dur;
+      total = dayTotal.inMinutes;
     }
-    return dayTotal;
+    return total;
   } else {
-    return dayTotal;
+    return total;
   }
 }
 
