@@ -3,9 +3,7 @@ import 'info_screen.dart';
 import 'welcome_screen.dart';
 import 'routes_widget.dart';
 import 'history_screen.dart';
-//import 'package:redux_persist/redux_persist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-//import 'stopwatch_widget.dart';
 import 'track_time_screen.dart';
 import 'save_squats.dart';
 
@@ -25,7 +23,7 @@ void main() async {
 }
 
 class MainScreen extends StatelessWidget {
-  String today = DateTime.now().toString().substring(0, 10);
+  final String today = DateTime.now().toString().substring(0, 10);
   final Modal modal = Modal();
   @override
   Widget build(BuildContext context) {
@@ -47,9 +45,6 @@ class MainScreen extends StatelessWidget {
           ),
           Text(sumSquats(today).toString()),
           Expanded(
-            child: RoutesWidget(screenName: TrackTimeScreen(), buttonName: 'Track Time'),
-          ),
-          Expanded (
             child: ModalSheet(),
           )
         ],
