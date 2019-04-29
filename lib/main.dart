@@ -6,6 +6,7 @@ import 'history_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'track_time_screen.dart';
 import 'save_squats.dart';
+import 'squats_today_widget.dart';
 
 var newUser2 = true;
 
@@ -34,16 +35,23 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: RoutesWidget(
-                screenName: HistoryScreen(), buttonName: 'History Screen'),
-          ),
-          Expanded(
-            child: RoutesWidget(
-              screenName: InfoScreen(),
-              buttonName: 'Info Screen',
+            child: Row(
+              children: <Widget>[
+                Container(child: RoutesWidget(
+          screenName: HistoryScreen(), buttonName: 'History Screen'),
+    ),
+                Container(child: RoutesWidget(
+    screenName: InfoScreen(),
+    buttonName: 'Info Screen',
+
+                ),
+                )],
             ),
           ),
           Text(sumSquats(today).toString()),
+          Expanded(
+            child: SquatsTodayWidget(),
+          ),
           Expanded(
             child: ModalSheet(),
           )
