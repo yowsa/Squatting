@@ -38,12 +38,15 @@ historyList() {
     }
     startDate = startDate.add(Duration(days: 1));
   }
-
 }
 
 class HistoryScreen extends StatelessWidget {
+  int a = sumSquats('2019-04-14');
+  double soFar = ((100.0/30.0)*4);
   @override
   Widget build(BuildContext context) {
+    double fullWidth = MediaQuery.of(context).size.width;
+    double soFar2 = fullWidth * (soFar/100);
     return Scaffold(
       appBar: AppBar(
         title: Text('History Screen'),
@@ -51,9 +54,39 @@ class HistoryScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           history(),
-          Container(
+         Container(
             child: historyList(),
           ),
+          Stack(
+            children: <Widget>[
+              Container(
+                color: Colors.blueGrey,
+                height: 50.0,
+                width: fullWidth,
+              ),
+              Container(
+                height: 50.0,
+                width: soFar2,
+                color: Colors.red,
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  height: 50.0,
+                  width: 50.0,
+                  child: Text('date'),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  height: 50.0,
+                  width: 100.0,
+                  child: Text('minutes'),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
