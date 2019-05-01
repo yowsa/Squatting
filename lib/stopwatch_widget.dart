@@ -37,6 +37,10 @@ class StopwatchState extends State<StopwatchWidget> {
         FloatingActionButton(
             child: Icon(Icons.stop),
             onPressed: testTimer.stopwatchStop, heroTag: 0),
+        FloatingActionButton(
+          child: Icon(Icons.receipt),
+          onPressed: testTimer.stopwatchReset, heroTag: 2,
+        ),
       ],
     );
   }

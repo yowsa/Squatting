@@ -8,6 +8,7 @@ import 'track_time_screen.dart';
 import 'save_squats.dart';
 import 'squats_today_widget.dart';
 
+/*
 var newUser2 = true;
 
 void main() async {
@@ -22,7 +23,7 @@ void main() async {
 
   loadSquats();
 }
-
+*/
 class MainScreen extends StatelessWidget {
   final String today = DateTime.now().toString().substring(0, 10);
   final Modal modal = Modal();
@@ -35,22 +36,30 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: Row(
-              children: <Widget>[
-                Container(child: RoutesWidget(
-          screenName: HistoryScreen(), buttonName: 'History Screen'),
-    ),
-                Container(child: RoutesWidget(
-    screenName: InfoScreen(),
-    buttonName: 'Info Screen',
-
-                ),
-                )],
-            ),
-          ),
-          Text(sumSquats(today).toString()),
-          Expanded(
             child: SquatsTodayWidget(),
+          ),
+          Row(
+            children: <Widget>[
+
+
+              FloatingActionButton(
+                heroTag: 0,
+                backgroundColor: Colors.grey,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HistoryScreen()));
+                },
+                child: Icon(Icons.assessment),
+              ),
+              FloatingActionButton(
+                heroTag: 1,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => InfoScreen()));
+                },
+                child: Icon(Icons.info),
+              ),
+            ],
           ),
           Expanded(
             child: ModalSheet(),

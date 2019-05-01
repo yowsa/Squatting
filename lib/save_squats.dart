@@ -31,8 +31,7 @@ sumSquats(day) {
 
 // function that loads saved items at start
 
-loadSquats() async {
-//  int squatValueDuration =
+Future<void> loadSquats() async {
 
   var decoder = JsonDecoder();
 
@@ -41,6 +40,7 @@ loadSquats() async {
 
   var stringToMapSquats = decoder.convert(allSavedSquats);
   allSquats = Map<String, dynamic>.from(stringToMapSquats);
+
 }
 
 // function that makes saved items into a string and saves it

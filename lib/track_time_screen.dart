@@ -18,6 +18,8 @@ class ModalSheetState extends State<ModalSheet> {
       body: Column(
         children: <Widget>[
           FloatingActionButton(
+            child: Icon(Icons.track_changes),
+            backgroundColor: Colors.red,
             heroTag: 10,
             onPressed: () => modal.mainBottomSheet(context),
           ),
@@ -35,23 +37,10 @@ class Modal {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              ListTile(
-                leading: Icon(Icons.message),
-                title: Text('hej1'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.message),
-                title: Text('hej2'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
               Expanded(
                 child: FloatingActionButton(
                     child: Icon(Icons.add),
+                    backgroundColor: Colors.red,
                     heroTag: 4,
                     onPressed: () => addSquat(testTimer.stopwatchValue())),
               ),

@@ -14,7 +14,7 @@ class StopwatchTimer {
   }
 
   // printing the current time of the timer
-  updateTime(Timer theTimer) {
+  updateTime() {
   /*
     don't believe this code is even used so commenting out until I decide to delete it
 
@@ -41,7 +41,7 @@ class StopwatchTimer {
   stopwatchStart() {
     myStopwatch.start();
     timer = Timer.periodic(
-        Duration(milliseconds: 100), (theTimer) => updateTime(theTimer));
+        Duration(milliseconds: 100), (theTimer) => updateTime());
   }
 
   // stops the timer
@@ -52,7 +52,7 @@ class StopwatchTimer {
 
   stopwatchReset() {
     myStopwatch.reset();
-    print(myStopwatch.elapsed);
+    updateTime();
   }
 
   setCallback(cb) {

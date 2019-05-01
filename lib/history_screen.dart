@@ -39,8 +39,6 @@ historyList() {
     startDate = startDate.add(Duration(days: 1));
   }
 
-  print(dateList);
-  print(allSquats);
 }
 
 class HistoryScreen extends StatelessWidget {
@@ -52,12 +50,6 @@ class HistoryScreen extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          RaisedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Go back to main screen!'),
-          ),
           history(),
           Container(
             child: historyList(),
