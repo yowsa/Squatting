@@ -11,7 +11,6 @@ Future<void> sleep() async {
 void main() async  {
   runApp(MaterialApp(title: 'Load Screen', home: LoadScreen()));
   await loadSquats();
-  print(allSquats);
   await sleep();
   runApp(MaterialApp(title: 'Welcome Screen', home: MainScreen()));
 }

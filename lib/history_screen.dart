@@ -5,19 +5,48 @@ import 'package:intl/intl.dart';
 history() {
   List historyView = <Widget>[];
   List historySum = <Widget>[];
-  allSquats['squats'].forEach((k, v) => historyView.add(Text(k)));
+  //Map teztMap = {};
+  allSquats['squats'].forEach((k, v) {
+    historyView.add(Text(k));
+  });
+
   historyView.sort((a, b) => b.data.compareTo(a.data));
   historyView.forEach((f) {
-    //Duration dailyDur = sumSquats(f.data);
-    //int dailyDurInt = dailyDur.inMinutes;
     historySum.add(Text(sumSquats(f.data).toString()));
   });
-  return Row(
+ /* historyView.forEach((f) {
+    teztMap[f] = sumSquats(f.data).toString();
+  });
+  Map teztMap2 = Map.fromIterables(historyView, historySum);
+  print(teztMap);
+  print(teztMap2);*/
+
+
+
+
+  return ListView.builder(
+    shrinkWrap: true,
+    itemCount: historyView.length,
+    itemBuilder: (BuildContext context, int index) {
+    return ListTile(
+      title: historyView[index],
+      subtitle: historySum[index],
+    );
+    },
+  );
+
+
+
+
+  /*return Row(
     children: <Widget>[
-      Column(children: historyView),
+      Container(
+        color: Colors.cyan,
+        child: Column(children: historyView),
+      ),
       Column(children: historySum),
     ],
-  );
+  );*/
 }
 
 historyList() {
@@ -42,19 +71,21 @@ historyList() {
 
 class HistoryScreen extends StatelessWidget {
   int a = sumSquats('2019-04-14');
-  double soFar = ((100.0/30.0)*4);
+  double soFar = ((100.0 / 30.0) * 20);
   @override
   Widget build(BuildContext context) {
     double fullWidth = MediaQuery.of(context).size.width;
-    double soFar2 = fullWidth * (soFar/100);
+    double soFar2 = fullWidth * (soFar / 100);
     return Scaffold(
       appBar: AppBar(
         title: Text('History Screen'),
       ),
       body: Column(
         children: <Widget>[
-          history(),
-         Container(
+          Expanded(
+            child: history(),
+          ),
+          Container(
             child: historyList(),
           ),
           Stack(
