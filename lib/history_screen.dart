@@ -6,7 +6,6 @@ history() {
   List historyView = <Widget>[];
   List historySumDouble = [];
   List historySum = <Widget>[];
-  //Map teztMap = {};
   allSquats['squats'].forEach((k, v) {
     historyView.add(Text(k));
   });
@@ -17,22 +16,8 @@ history() {
     historySumDouble.add(sumSquats(f.data)/30);
   });
 
- // temporary code
-  /*
-  historyView.forEach((f) {
-    historySum.add(Text(sumSquats(f.data).toString()));
-  });
-*/
 
-  /* historyView.forEach((f) {
-    teztMap[f] = sumSquats(f.data).toString();
-  });
-  Map teztMap2 = Map.fromIterables(historyView, historySum);
-  print(teztMap);
-  print(teztMap2);*/
-
-
-  return ListView.builder(
+  return ListView.separated(
     shrinkWrap: true,
     itemCount: historyView.length,
     itemBuilder: (BuildContext context, int index) {
@@ -56,6 +41,7 @@ history() {
         Align(
           alignment: Alignment.topLeft,
           child: Container(
+            alignment: Alignment(-1.0, 0.0),
             height: 50.0,
             width: 150.0,
             child: historyView[index],
@@ -64,6 +50,7 @@ history() {
         Align(
           alignment: Alignment.topRight,
           child: Container(
+            alignment: Alignment(1.0, 0.0),
             height: 50.0,
             width: 100.0,
             child: historySum[index],
@@ -75,6 +62,15 @@ history() {
 
 
 
+
+    },
+    separatorBuilder: (context, position) {
+      return Container(
+        width: 300.0,
+        height: 10.0,
+        color: Colors.white,
+
+      );
     },
   );
 
@@ -131,36 +127,6 @@ class HistoryScreen extends StatelessWidget {
           Container(
             child: historyList(),
           ),
-          Stack(
-            children: <Widget>[
-              Container(
-                color: Colors.blueGrey,
-                height: 50.0,
-                width: fullWidth,
-              ),
-              Container(
-                height: 50.0,
-                width: soFar2,
-                color: Colors.red,
-              ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  height: 50.0,
-                  width: 50.0,
-                  child: Text('date'),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  height: 50.0,
-                  width: 100.0,
-                  child: Text('minutes'),
-                ),
-              ),
-            ],
-          )
         ],
       ),
     );
