@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 history() {
   List historyView = <Widget>[];
+  List historySumDouble = [];
   List historySum = <Widget>[];
   //Map teztMap = {};
   allSquats['squats'].forEach((k, v) {
@@ -11,10 +12,19 @@ history() {
   });
 
   historyView.sort((a, b) => b.data.compareTo(a.data));
+
+  historyView.forEach((f) {
+    historySumDouble.add(sumSquats(f.data)/30);
+  });
+
+ // temporary code
+  /*
   historyView.forEach((f) {
     historySum.add(Text(sumSquats(f.data).toString()));
   });
- /* historyView.forEach((f) {
+*/
+
+  /* historyView.forEach((f) {
     teztMap[f] = sumSquats(f.data).toString();
   });
   Map teztMap2 = Map.fromIterables(historyView, historySum);
@@ -22,16 +32,49 @@ history() {
   print(teztMap2);*/
 
 
-
-
   return ListView.builder(
     shrinkWrap: true,
     itemCount: historyView.length,
     itemBuilder: (BuildContext context, int index) {
-    return ListTile(
-      title: historyView[index],
-      subtitle: historySum[index],
+      historySum.add(Text(sumSquats(historyView[index].data).toString()));
+      double fullWidth = MediaQuery.of(context).size.width;
+      double squatPercentageWidth = fullWidth * historySumDouble[index];
+
+    return Stack(
+      children: <Widget>[
+
+        Container(
+          color: Colors.blueGrey,
+          height: 50.0,
+          width: fullWidth,
+        ),
+        Container(
+          height: 50.0,
+          width: squatPercentageWidth,
+          color: Colors.red,
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Container(
+            height: 50.0,
+            width: 150.0,
+            child: historyView[index],
+          ),
+        ),
+        Align(
+          alignment: Alignment.topRight,
+          child: Container(
+            height: 50.0,
+            width: 100.0,
+            child: historySum[index],
+          ),
+        ),
+      ],
+
     );
+
+
+
     },
   );
 
