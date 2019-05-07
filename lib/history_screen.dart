@@ -109,12 +109,8 @@ historyList() {
 }
 
 class HistoryScreen extends StatelessWidget {
-  int a = sumSquats('2019-04-14');
-  double soFar = ((100.0 / 30.0) * 20);
   @override
   Widget build(BuildContext context) {
-    double fullWidth = MediaQuery.of(context).size.width;
-    double soFar2 = fullWidth * (soFar / 100);
     return Scaffold(
       appBar: AppBar(
         title: Text('History Screen'),

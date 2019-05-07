@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'info_screen.dart';
-import 'welcome_screen.dart';
-import 'routes_widget.dart';
 import 'history_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'track_time_screen.dart';
-import 'save_squats.dart';
 import 'squats_today_widget.dart';
 
 /*
