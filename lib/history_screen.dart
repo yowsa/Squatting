@@ -23,7 +23,12 @@ history() {
     itemBuilder: (BuildContext context, int index) {
       historySum.add(Text(sumSquats(historyView[index].data).toString()));
       double fullWidth = MediaQuery.of(context).size.width;
-      double squatPercentageWidth = fullWidth * historySumDouble[index];
+      double squatPercentageWidth;
+      if ((fullWidth * historySumDouble[index])>fullWidth) {
+      squatPercentageWidth = fullWidth;}
+      else {
+      squatPercentageWidth = fullWidth * historySumDouble[index];
+          }
 
     return Stack(
       children: <Widget>[
