@@ -18,15 +18,6 @@ class SquatsTodayState extends State<SquatsTodayWidget> {
   final _chartSize = Size(300.0, 300.0);
   final String today = DateTime.now().toString().substring(0, 10);
   var goal = 30.00;
-/*
-  var todaysSquats = allSquats['squats']['2019-04-24'];
-
-  void loadState() {
-    setState(() {
-      todaysSquats = (allSquats['squats']['2019-04-24'].toString());
-    });
-  }
-  */
 
   @override
   Widget build(BuildContext context) {

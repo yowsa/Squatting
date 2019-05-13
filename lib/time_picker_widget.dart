@@ -9,7 +9,7 @@ class TimerPickerWidget extends StatefulWidget {
 }
 
 class _TimerPickerWidgetState extends State<TimerPickerWidget> {
-  Modal modal = Modal();
+  //Modal modal = Modal();
   Duration initialTimer = Duration();
 
   Widget time() {

@@ -3,6 +3,8 @@ import 'info_screen.dart';
 import 'history_screen.dart';
 import 'track_time_screen.dart';
 import 'squats_today_widget.dart';
+import 'routes_widget.dart';
+//import 'update_scree_test.dart';
 
 /*
 var newUser2 = true;
@@ -22,7 +24,7 @@ void main() async {
 */
 class MainScreen extends StatelessWidget {
   final String today = DateTime.now().toString().substring(0, 10);
-  final Modal modal = Modal();
+  //final Modal modal = Modal();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +61,8 @@ class MainScreen extends StatelessWidget {
           ),
           Expanded(
             child: ModalSheet(),
-          )
+          ),
+          RoutesWidget(screenName: StatefulScreen() , buttonName: 'textscreen')
         ],
       ),
     );
