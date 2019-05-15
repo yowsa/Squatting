@@ -4,7 +4,6 @@ import 'history_screen.dart';
 import 'track_time_screen.dart';
 import 'squats_today_widget.dart';
 import 'routes_widget.dart';
-//import 'update_scree_test.dart';
 
 /*
 var newUser2 = true;
@@ -34,7 +33,7 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: SquatsTodayWidget(),
+            child: SquatsCircularChartWidget(),
           ),
           Row(
             children: <Widget>[
@@ -62,7 +61,6 @@ class MainScreen extends StatelessWidget {
           Expanded(
             child: ModalSheet(),
           ),
-          RoutesWidget(screenName: StatefulScreen() , buttonName: 'textscreen')
         ],
       ),
     );

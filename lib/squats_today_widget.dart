@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'save_squats.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-
-
+/*
 class SquatsTodayWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -18,6 +17,12 @@ class SquatsTodayState extends State<SquatsTodayWidget> {
   final _chartSize = Size(300.0, 300.0);
   final String today = DateTime.now().toString().substring(0, 10);
   var goal = 30.00;
+  void squatsTodaySetState() {
+    setState(() {
+      List<CircularStackEntry> newData = sumSquats(today).toDouble();
+      _chartKey.currentState.updateData(newData);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,32 +31,120 @@ class SquatsTodayState extends State<SquatsTodayWidget> {
       children: <Widget>[
         Expanded(
           child: AnimatedCircularChart(
-              key: _chartKey, size: _chartSize, initialChartData: <CircularStackEntry>[
-            CircularStackEntry(
-              <CircularSegmentEntry>[
-                CircularSegmentEntry(
-                  sumSquats(today).toDouble(),
-                  Colors.blue[400],
-                  rankKey: 'completed',
-                ),
-                CircularSegmentEntry(
-                  goal-sumSquats(today).toDouble(),
-                 Colors.white,
-                  rankKey: 'remaining',
-                ),
-              ],
-              rankKey: 'progress',
+            key: _chartKey,
+            size: _chartSize,
+            initialChartData: <CircularStackEntry>[
+              CircularStackEntry(
+                <CircularSegmentEntry>[
+                  CircularSegmentEntry(
+                    sumSquats(today).toDouble(),
+                    Colors.blue[400],
+                    rankKey: 'completed',
+                  ),
+                  CircularSegmentEntry(
+                    goal - sumSquats(today).toDouble(),
+                    Colors.white,
+                    rankKey: 'remaining',
+                  ),
+                ],
+                rankKey: 'progress',
+              ),
+            ],
+            chartType: CircularChartType.Radial,
+            percentageValues: false,
+            holeLabel: sumSquats(today).toString() + ' min',
+            labelStyle: TextStyle(
+              color: Colors.amber,
+              fontWeight: FontWeight.bold,
+              fontSize: 24.0,
             ),
+          ),
+        ),
+        FloatingActionButton(onPressed: () {
+          squatsTodaySetState();
+        })
+      ],
+    );
+  }
+}
+*/
+
+
+// New circular chart version
+
+
+class SquatsCircularChartWidget extends StatefulWidget {
+  @override
+  SquatsCircularChartState createState() => SquatsCircularChartState();
+
+  }
+
+
+class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
+  final GlobalKey<AnimatedCircularChartState> _chartKey =
+  GlobalKey<AnimatedCircularChartState>();
+  final _chartSize = Size(300.0, 300.0);
+ // final String today = DateTime.now().toString().substring(0, 10);
+ // var goal = 30.00;
+  double value = 50.0;
+
+
+  void squatsCircularChartSetState() {
+    setState(() {
+      value += 10;
+      List<CircularStackEntry> data = _generateChartData(value);
+      _chartKey.currentState.updateData(data);
+    });
+  }
+
+  List<CircularStackEntry> _generateChartData(double value) {
+    Color dialColor = Colors.blue;
+   // labelColor = dialColor;
+
+    List<CircularStackEntry> data = <CircularStackEntry>[
+      CircularStackEntry(
+        <CircularSegmentEntry>[
+          CircularSegmentEntry(
+            value,
+            dialColor,
+            rankKey: 'percentage',
+
+          )
+
+        ],
+        rankKey: 'percentage'
+
+      ),
+    ];
+  return data;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Column(
+      children: <Widget>[
+        Container(
+          child: AnimatedCircularChart(
+            key: _chartKey,
+            size: _chartSize,
+            initialChartData: _generateChartData(value),
+            chartType: CircularChartType.Radial,
+            edgeStyle: SegmentEdgeStyle.round,
+            percentageValues: true,
+            holeLabel: '$value' + ' min',
+            labelStyle: TextStyle(
+              color: Colors.amber,
+              fontWeight: FontWeight.bold,
+              fontSize: 24.0,
+            ),
+          ),
+        ),
+        Row(
+          children: <Widget>[
+            RaisedButton(onPressed: squatsCircularChartSetState),
           ],
-          chartType: CircularChartType.Radial,
-          percentageValues: false,
-          holeLabel: sumSquats(today).toString() + ' min',
-          labelStyle: TextStyle(
-            color: Colors.amber,
-            fontWeight: FontWeight.bold,
-            fontSize: 24.0,
-          ),),
-        )
+        ),
       ],
     );
   }
