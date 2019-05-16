@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:squat_mobility/squats_today_widget.dart';
+import 'package:squat_mobility/main.dart';
 
 // Global variable that holds all squats (dict/map)
 
@@ -68,6 +69,7 @@ addSquat(squatValue) {
     ];
   }
   print(allSquats);
+  chartKey.currentState.squatsCircularChartSetState();
   // if I want to remove a date, use the code below
  // allSquats['squats'].remove('2019-04-10');
 

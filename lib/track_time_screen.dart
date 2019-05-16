@@ -4,10 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'time_picker_widget.dart';
 import 'save_squats.dart';
 import 'stopwatch_timer_class.dart';
+import 'package:squat_mobility/squats_today_widget.dart';
 
 class ModalSheet extends StatefulWidget {
   @override
   ModalSheetState createState() => ModalSheetState();
+
 }
 
 class ModalSheetState extends State<ModalSheet> {
@@ -40,16 +42,16 @@ class StatefulScreen extends StatefulWidget {
 
 class StatefulScreenState extends State<StatefulWidget> {
   bool timerState = true;
-  bool timepickerState = false;
+  bool timePickerState = false;
 
   void boop() {
     setState(() {
       if (timerState) {
         timerState = false;
-        timepickerState = true;
+        timePickerState = true;
       } else {
         timerState = true;
-        timepickerState = false;
+        timePickerState = false;
       }
     });
   }
@@ -69,7 +71,7 @@ class StatefulScreenState extends State<StatefulWidget> {
             Visibility(
                 visible: timerState, child: Expanded(child: StopwatchWidget())),
             Visibility(
-              visible: timepickerState,
+              visible: timePickerState,
               child: Expanded(child: TimerPickerWidget()),
             ),
           ],
@@ -101,33 +103,3 @@ stateChange() {
   bool state = false;
   print(state);
 }
-
-// Original code for the modal bottom sheet
-/*
-class Modal {
-  mainBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Expanded(
-                child: FloatingActionButton(
-                    child: Icon(Icons.add),
-                    backgroundColor: Colors.red,
-                    heroTag: 4,
-                    onPressed: () => addSquat(testTimer.stopwatchValue())),
-              ),
-              Expanded(
-                child: StopwatchWidget(),
-              ),
-              Expanded(
-                child: TimerPickerWidget(),
-              ),
-            ],
-          );
-        });
-  }
-}
-*/

@@ -69,29 +69,39 @@ class SquatsTodayState extends State<SquatsTodayWidget> {
 }
 */
 
-
 // New circular chart version
-
 
 class SquatsCircularChartWidget extends StatefulWidget {
   @override
   SquatsCircularChartState createState() => SquatsCircularChartState();
-
-  }
-
+  SquatsCircularChartWidget({Key key}) : super(key: key);
+}
 
 class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
   final GlobalKey<AnimatedCircularChartState> _chartKey =
-  GlobalKey<AnimatedCircularChartState>();
+      GlobalKey<AnimatedCircularChartState>();
   final _chartSize = Size(300.0, 300.0);
- // final String today = DateTime.now().toString().substring(0, 10);
- // var goal = 30.00;
-  double value = 50.0;
+  String today; // = DateTime.now().toString().substring(0, 10);
+  // var goal = 30.00;
+  var value; // = sumSquats(today);
+  // var value2 = SquatsCircularChartState();
 
-
+  SquatsCircularChartState() {
+    today = DateTime.now().toString().substring(0, 10);
+    value = sumSquats(today).toDouble();
+    // todayValue();
+    //print(todayValue());
+  }
+/*
+  todayValue() {
+    String today = DateTime.now().toString().substring(0, 10);
+    var todayValue = sumSquats(today);
+    return todayValue;
+  }
+*/
   void squatsCircularChartSetState() {
     setState(() {
-      value += 10;
+      value = sumSquats(today).toDouble();
       List<CircularStackEntry> data = _generateChartData(value);
       _chartKey.currentState.updateData(data);
     });
@@ -99,24 +109,18 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
 
   List<CircularStackEntry> _generateChartData(double value) {
     Color dialColor = Colors.blue;
-   // labelColor = dialColor;
+    // labelColor = dialColor;
 
     List<CircularStackEntry> data = <CircularStackEntry>[
-      CircularStackEntry(
-        <CircularSegmentEntry>[
-          CircularSegmentEntry(
-            value,
-            dialColor,
-            rankKey: 'percentage',
-
-          )
-
-        ],
-        rankKey: 'percentage'
-
-      ),
+      CircularStackEntry(<CircularSegmentEntry>[
+        CircularSegmentEntry(
+          value,
+          dialColor,
+          rankKey: 'percentage',
+        )
+      ], rankKey: 'percentage'),
     ];
-  return data;
+    return data;
   }
 
   @override

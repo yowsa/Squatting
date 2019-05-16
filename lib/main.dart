@@ -5,6 +5,8 @@ import 'track_time_screen.dart';
 import 'squats_today_widget.dart';
 import 'routes_widget.dart';
 
+final chartKey = GlobalKey<SquatsCircularChartState>();
+
 /*
 var newUser2 = true;
 
@@ -26,6 +28,7 @@ class MainScreen extends StatelessWidget {
   //final Modal modal = Modal();
   @override
   Widget build(BuildContext context) {
+    var circularChart = SquatsCircularChartWidget(key: chartKey);
     return Scaffold(
       appBar: AppBar(
         title: Text('Main Screen'),
@@ -33,7 +36,7 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: SquatsCircularChartWidget(),
+            child: circularChart,
           ),
           Row(
             children: <Widget>[
