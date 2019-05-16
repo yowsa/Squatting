@@ -48,7 +48,6 @@ Future<void> loadSquats() async {
 // function that makes saved items into a string and saves it
 
 Future<bool> saveSquats() async {
-  print(allSquats);
   var encoder = JsonEncoder();
   String savedSquatsString = encoder.convert(allSquats);
 
@@ -57,6 +56,19 @@ Future<bool> saveSquats() async {
 
   return true;
 }
+
+
+
+Future<void> sleep() async {
+  return Future.delayed(Duration(milliseconds: 400));
+}
+
+
+void delayedCircularChartAnimation() async  {
+  await sleep();
+  chartKey.currentState.squatsCircularChartSetState();
+}
+
 
 addSquat(squatValue) {
   int squatValueSeconds = squatValue.inSeconds;
@@ -68,8 +80,9 @@ addSquat(squatValue) {
       squatValueSeconds,
     ];
   }
-  print(allSquats);
-  chartKey.currentState.squatsCircularChartSetState();
+  delayedCircularChartAnimation();
+
+
   // if I want to remove a date, use the code below
  // allSquats['squats'].remove('2019-04-10');
 
@@ -79,6 +92,4 @@ addSquat(squatValue) {
 
   saveSquats();
 
-  String date = DateTime.now().toString().substring(0,10);
-  print(sumSquats(date));
 }

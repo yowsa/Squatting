@@ -144,11 +144,6 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
             ),
           ),
         ),
-        Row(
-          children: <Widget>[
-            RaisedButton(onPressed: squatsCircularChartSetState),
-          ],
-        ),
       ],
     );
   }
