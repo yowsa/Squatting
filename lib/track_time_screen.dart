@@ -42,27 +42,27 @@ class StatefulScreen extends StatefulWidget {
 class StatefulScreenState extends State<StatefulWidget> {
   bool timerState = true;
   bool timePickerState = false;
-  Color timerButtonColor = Colors.red;
-  Color timePickerButtonColor = Colors.grey;
-  Color timerSplashColor;
-  Color timePickerSplashColor = Colors.transparent;
+  Color timerButtonColor = Colors.grey;
+  Color timerSplashColor = Colors.transparent;
+  Color timePickerButtonColor = Colors.green;
+  Color timePickerSplashColor = Colors.blue;
 
   void boop() {
     setState(() {
       if (timerState) {
         timerState = false;
         timePickerState = true;
-        timerButtonColor = Colors.grey;
-        timerSplashColor = Colors.transparent;
-        timePickerButtonColor = Colors.red;
-        timePickerSplashColor = Colors.blue;
-      } else {
-        timerState = true;
-        timePickerState = false;
-        timerButtonColor = Colors.red;
+        timerButtonColor = Colors.green;
         timerSplashColor = Colors.blue;
         timePickerButtonColor = Colors.grey;
         timePickerSplashColor = Colors.transparent;
+      } else {
+        timerState = true;
+        timePickerState = false;
+        timerButtonColor = Colors.grey;
+        timerSplashColor = Colors.transparent;
+        timePickerButtonColor = Colors.green;
+        timePickerSplashColor = Colors.blue;
 
       }
     });

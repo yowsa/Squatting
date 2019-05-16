@@ -80,17 +80,6 @@ history() {
   );
 
 
-
-
-  /*return Row(
-    children: <Widget>[
-      Container(
-        color: Colors.cyan,
-        child: Column(children: historyView),
-      ),
-      Column(children: historySum),
-    ],
-  );*/
 }
 
 historyList() {
@@ -124,9 +113,6 @@ class HistoryScreen extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: history(),
-          ),
-          Container(
-            child: historyList(),
           ),
         ],
       ),

@@ -4,6 +4,7 @@ import 'history_screen.dart';
 import 'track_time_screen.dart';
 import 'squats_today_widget.dart';
 import 'routes_widget.dart';
+import 'design_elements.dart';
 
 final chartKey = GlobalKey<SquatsCircularChartState>();
 
@@ -61,6 +62,19 @@ class MainScreen extends StatelessWidget {
           ),
           Expanded(
             child: ModalSheet(),
+          ),
+          Center(
+            //child: ClipRect(
+             //clipper: MyClipper(),
+              child: Container(
+                height: 200.0,
+                width: 400.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only (topLeft: Radius.elliptical(200.0, 70.0), topRight: Radius.elliptical(200.0,70.0)),
+                  color: Colors.deepOrangeAccent[400],
+                ),
+              ),
+           // ),
           ),
         ],
       ),

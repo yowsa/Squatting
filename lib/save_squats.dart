@@ -86,6 +86,7 @@ addSquat(squatValue) {
   // if I want to remove a date, use the code below
  // allSquats['squats'].remove('2019-04-10');
 
+
 //If you want to add a date with value use code below
 
   //allSquats['squats']['2019-04-11'] = [4, 5, 6, 7];
