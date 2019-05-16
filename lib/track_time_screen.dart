@@ -9,7 +9,6 @@ import 'package:squat_mobility/squats_today_widget.dart';
 class ModalSheet extends StatefulWidget {
   @override
   ModalSheetState createState() => ModalSheetState();
-
 }
 
 class ModalSheetState extends State<ModalSheet> {
@@ -43,15 +42,28 @@ class StatefulScreen extends StatefulWidget {
 class StatefulScreenState extends State<StatefulWidget> {
   bool timerState = true;
   bool timePickerState = false;
+  Color timerButtonColor = Colors.red;
+  Color timePickerButtonColor = Colors.grey;
+  Color timerSplashColor;
+  Color timePickerSplashColor = Colors.transparent;
 
   void boop() {
     setState(() {
       if (timerState) {
         timerState = false;
         timePickerState = true;
+        timerButtonColor = Colors.grey;
+        timerSplashColor = Colors.transparent;
+        timePickerButtonColor = Colors.red;
+        timePickerSplashColor = Colors.blue;
       } else {
         timerState = true;
         timePickerState = false;
+        timerButtonColor = Colors.red;
+        timerSplashColor = Colors.blue;
+        timePickerButtonColor = Colors.grey;
+        timePickerSplashColor = Colors.transparent;
+
       }
     });
   }
@@ -63,10 +75,28 @@ class StatefulScreenState extends State<StatefulWidget> {
       body: Center(
         child: Column(
           children: <Widget>[
-            FloatingActionButton(
-              onPressed: () {
-                boop();
-              },
+            Row(
+              children: <Widget>[
+                RaisedButton(
+                    child: Text('Timer'),
+                    color: timerButtonColor,
+                    splashColor: timerSplashColor,
+                    onPressed: () {
+                      if (timerState) {
+                      } else {
+                        boop();
+                      }
+                    }),
+                RaisedButton(
+                    child: Text('Timer Picker'),
+                    color: timePickerButtonColor,
+                    splashColor: timePickerSplashColor,
+                    onPressed: () {
+                      if (timerState) {
+                        boop();
+                      } else {}
+                    }),
+              ],
             ),
             Visibility(
                 visible: timerState, child: Expanded(child: StopwatchWidget())),

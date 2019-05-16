@@ -46,7 +46,12 @@ class StopwatchState extends State<StopwatchWidget> {
               child: Icon(Icons.add),
               backgroundColor: Colors.red,
               heroTag: 4,
-              onPressed: () => addSquat(testTimer.stopwatchValue())),
+              onPressed: () {
+                Navigator.pop(context);
+                testTimer.stopwatchReset();
+                addSquat(testTimer.stopwatchValue());}
+
+        ),
       ],
     );
   }

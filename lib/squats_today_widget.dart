@@ -82,13 +82,17 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
       GlobalKey<AnimatedCircularChartState>();
   final _chartSize = Size(300.0, 300.0);
   String today; // = DateTime.now().toString().substring(0, 10);
-  // var goal = 30.00;
-  var value; // = sumSquats(today);
+  var goal = 30;
+  var value; // = sumSquats(today).toDouble();
+  var valueMin; // Minute value of todays squats
+  var valueMinLeft; // Minutes left to squat today
   // var value2 = SquatsCircularChartState();
 
   SquatsCircularChartState() {
     today = DateTime.now().toString().substring(0, 10);
-    value = sumSquats(today).toDouble();
+    value = (sumSquats(today).toDouble()) * 3.3333333;
+    valueMin = sumSquats(today);
+    valueMinLeft = goal - valueMin;
     // todayValue();
     //print(todayValue());
   }
@@ -101,7 +105,9 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
 */
   void squatsCircularChartSetState() {
     setState(() {
-      value = sumSquats(today).toDouble();
+      value = (sumSquats(today).toDouble()) * 3.3333333;
+      valueMin = sumSquats(today);
+      valueMinLeft = goal - valueMin;
       List<CircularStackEntry> data = _generateChartData(value);
       _chartKey.currentState.updateData(data);
     });
@@ -136,7 +142,7 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
             chartType: CircularChartType.Radial,
             edgeStyle: SegmentEdgeStyle.round,
             percentageValues: true,
-            holeLabel: '$value' + ' min',
+            holeLabel: '$valueMin' +' min',
             labelStyle: TextStyle(
               color: Colors.amber,
               fontWeight: FontWeight.bold,
@@ -144,6 +150,9 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
             ),
           ),
         ),
+        Container(
+          child: Text('$valueMinLeft out of $goal minutes left'),
+        )
       ],
     );
   }
