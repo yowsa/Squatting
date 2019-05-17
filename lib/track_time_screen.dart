@@ -16,18 +16,13 @@ class ModalSheetState extends State<ModalSheet> {
   StatefulScreenState modalScreen = StatefulScreenState();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
+    return
           FloatingActionButton(
             child: Icon(Icons.track_changes),
             backgroundColor: Colors.red,
             heroTag: 10,
             onPressed: () => modal.mainBottomSheet(context),
-          ),
-        ],
-      ),
-    );
+          );
   }
 }
 

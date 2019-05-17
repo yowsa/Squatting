@@ -1,75 +1,7 @@
 import 'package:flutter/material.dart';
 import 'save_squats.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-/*
-class SquatsTodayWidget extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    SquatsTodayState squatsToday = SquatsTodayState();
-
-    return squatsToday;
-  }
-}
-
-class SquatsTodayState extends State<SquatsTodayWidget> {
-  final GlobalKey<AnimatedCircularChartState> _chartKey =
-      GlobalKey<AnimatedCircularChartState>();
-  final _chartSize = Size(300.0, 300.0);
-  final String today = DateTime.now().toString().substring(0, 10);
-  var goal = 30.00;
-  void squatsTodaySetState() {
-    setState(() {
-      List<CircularStackEntry> newData = sumSquats(today).toDouble();
-      _chartKey.currentState.updateData(newData);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: AnimatedCircularChart(
-            key: _chartKey,
-            size: _chartSize,
-            initialChartData: <CircularStackEntry>[
-              CircularStackEntry(
-                <CircularSegmentEntry>[
-                  CircularSegmentEntry(
-                    sumSquats(today).toDouble(),
-                    Colors.blue[400],
-                    rankKey: 'completed',
-                  ),
-                  CircularSegmentEntry(
-                    goal - sumSquats(today).toDouble(),
-                    Colors.white,
-                    rankKey: 'remaining',
-                  ),
-                ],
-                rankKey: 'progress',
-              ),
-            ],
-            chartType: CircularChartType.Radial,
-            percentageValues: false,
-            holeLabel: sumSquats(today).toString() + ' min',
-            labelStyle: TextStyle(
-              color: Colors.amber,
-              fontWeight: FontWeight.bold,
-              fontSize: 24.0,
-            ),
-          ),
-        ),
-        FloatingActionButton(onPressed: () {
-          squatsTodaySetState();
-        })
-      ],
-    );
-  }
-}
-*/
-
-// New circular chart version
+import 'package:squat_mobility/design_elements.dart';
 
 class SquatsCircularChartWidget extends StatefulWidget {
   @override
@@ -96,13 +28,7 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
     // todayValue();
     //print(todayValue());
   }
-/*
-  todayValue() {
-    String today = DateTime.now().toString().substring(0, 10);
-    var todayValue = sumSquats(today);
-    return todayValue;
-  }
-*/
+
   void squatsCircularChartSetState() {
     setState(() {
       value = (sumSquats(today).toDouble()) * 3.3333333;
@@ -114,8 +40,7 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
   }
 
   List<CircularStackEntry> _generateChartData(double value) {
-    Color dialColor = Colors.blue;
-    // labelColor = dialColor;
+    Color dialColor = mainColor;
 
     List<CircularStackEntry> data = <CircularStackEntry>[
       CircularStackEntry(<CircularSegmentEntry>[
@@ -142,11 +67,11 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
             chartType: CircularChartType.Radial,
             edgeStyle: SegmentEdgeStyle.round,
             percentageValues: true,
-            holeLabel: '$valueMin' +' min',
+            holeLabel: '$valueMin' + ' min',
             labelStyle: TextStyle(
-              color: Colors.amber,
+              color: textColor,
               fontWeight: FontWeight.bold,
-              fontSize: 24.0,
+              fontSize: 34.0,
             ),
           ),
         ),

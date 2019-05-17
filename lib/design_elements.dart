@@ -1,34 +1,10 @@
 import 'package:flutter/material.dart';
-/*
-class bottomOval extends CustomClipper<Rect> {
-  @override
-  Rect getClip(Size size) {
-    // TODO: implement getClip
-    Rect rect = Rect.fromLTRB(0.0, 0.0, size.width, size.height);
-    return rect;
-  }
-  @override
-  bool shouldReclip(CustomRect oldClipper) {
-    return true;
-    // TODO: implement shouldReclip
-  }
 
-}
+//Size screenSize = Size(width, height);
+//double screenWidth = MediaQuery.of(context).size.width;
+Color mainColor = Color.fromRGBO(110, 175, 153, 1.0);
+Color accentColor = Color.fromRGBO(189, 211, 204, 1.0);
+Color textColor = Color.fromRGBO(112, 112, 112, 1.0);
+Color backgroundColor = Color.fromRGBO(221, 221, 221, 1.0);
+Color menuColor = Color.fromRGBO(96, 96, 96, 1.0);
 
-*/
-
-class MyClipper extends CustomClipper<Rect>{
-  @override
-  Rect getClip(Size size) {
-    Rect rect = Rect.fromLTRB(0.0, 0.0, size.width, 200.0);
-        //radius:  50.0
-   // );
-    return rect;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Rect> oldClipper) {
-    return false;
-  }
-
-}

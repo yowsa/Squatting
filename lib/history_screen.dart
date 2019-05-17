@@ -1,85 +1,87 @@
 import 'package:flutter/material.dart';
 import 'save_squats.dart';
 import 'package:intl/intl.dart';
+import 'package:squat_mobility/design_elements.dart';
 
 history() {
   List historyView = <Widget>[];
   List historySumDouble = [];
   List historySum = <Widget>[];
   allSquats['squats'].forEach((k, v) {
-    historyView.add(Text(k));
+    historyView.add(Text(k, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)));
   });
 
   historyView.sort((a, b) => b.data.compareTo(a.data));
 
   historyView.forEach((f) {
-    historySumDouble.add(sumSquats(f.data)/30);
+    historySumDouble.add(sumSquats(f.data) / 30);
   });
-
 
   return ListView.separated(
     shrinkWrap: true,
     itemCount: historyView.length,
     itemBuilder: (BuildContext context, int index) {
-      historySum.add(Text(sumSquats(historyView[index].data).toString()));
+      historySum.add(Text(sumSquats(historyView[index].data).toString() + ' min', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)));
       double fullWidth = MediaQuery.of(context).size.width;
       double squatPercentageWidth;
-      if ((fullWidth * historySumDouble[index])>fullWidth) {
-      squatPercentageWidth = fullWidth;}
-      else {
-      squatPercentageWidth = fullWidth * historySumDouble[index];
-          }
+      if ((fullWidth * historySumDouble[index]) > fullWidth) {
+        squatPercentageWidth = fullWidth;
+      } else {
+        squatPercentageWidth = fullWidth * historySumDouble[index];
+      }
 
-    return Stack(
-      children: <Widget>[
-
-        Container(
-          color: Colors.blueGrey,
-          height: 50.0,
-          width: fullWidth,
-        ),
-        Container(
-          height: 50.0,
-          width: squatPercentageWidth,
-          color: Colors.red,
-        ),
-        Align(
-          alignment: Alignment.topLeft,
-          child: Container(
-            alignment: Alignment(-1.0, 0.0),
-            height: 50.0,
-            width: 150.0,
-            child: historyView[index],
+      return Stack(
+        children: <Widget>[
+          Container(
+            height: 55.0,
+            width: fullWidth,
+            decoration: BoxDecoration(
+              color: accentColor,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
           ),
-        ),
-        Align(
-          alignment: Alignment.topRight,
-          child: Container(
-            alignment: Alignment(1.0, 0.0),
-            height: 50.0,
-            width: 100.0,
-            child: historySum[index],
+          Container(
+            height: 55.0,
+            width: squatPercentageWidth,
+            decoration: BoxDecoration(
+              color: mainColor,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
           ),
-        ),
-      ],
-
-    );
-
-
-
-
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Container(
+                alignment: Alignment(-1.0, 0.0),
+                height: 55.0,
+                width: (fullWidth / 2),
+                child: historyView[index],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Container(
+                alignment: Alignment(1.0, 0.0),
+                height: 55.0,
+                width: (fullWidth / 2),
+                child: historySum[index],
+              ),
+            ),
+          ),
+        ],
+      );
     },
     separatorBuilder: (context, position) {
       return Container(
         width: 300.0,
         height: 10.0,
-        color: Colors.white,
-
       );
     },
   );
-
-
 }
 
 historyList() {
@@ -106,13 +108,20 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Text('History Screen'),
+        title: Text('Squat History'),
+        backgroundColor: menuColor,
       ),
       body: Column(
         children: <Widget>[
           Expanded(
-            child: history(),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                child: history(),
+              ),
+            ),
           ),
         ],
       ),

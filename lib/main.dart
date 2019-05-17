@@ -29,52 +29,71 @@ class MainScreen extends StatelessWidget {
   //final Modal modal = Modal();
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     var circularChart = SquatsCircularChartWidget(key: chartKey);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Main Screen'),
-      ),
+      backgroundColor: backgroundColor,
+     /* appBar: AppBar(
+        backgroundColor: menuColor,
+        title: Text('SQUATTING'),
+      ),*/
       body: Column(
         children: <Widget>[
-          Expanded(
+          FractionallySizedBox(
             child: circularChart,
-          ),
-          Row(
-            children: <Widget>[
-              FloatingActionButton(
-                heroTag: 0,
-                backgroundColor: Colors.grey,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HistoryScreen()));
-                },
-                child: Icon(Icons.assessment),
-              ),
-              FloatingActionButton(
-                heroTag: 1,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => InfoScreen()));
-                },
-                child: Icon(Icons.info),
-              ),
-            ],
           ),
           Expanded(
             child: ModalSheet(),
           ),
-          Center(
-            //child: ClipRect(
-             //clipper: MyClipper(),
-              child: Container(
-                height: 200.0,
-                width: 400.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only (topLeft: Radius.elliptical(200.0, 70.0), topRight: Radius.elliptical(200.0,70.0)),
-                  color: Colors.deepOrangeAccent[400],
+          Stack(
+            children: <Widget>[
+              Container(
+                color: Colors.red,
+                height: 275.0,
+                width: screenWidth,
+              ),
+             Positioned(
+               bottom: 0.0,
+               left: 0.0,
+               child: Container(
+                      height: 250.0,
+                      width: screenWidth,
+                 decoration: BoxDecoration(
+                   color: Colors.orangeAccent,
+                   borderRadius: BorderRadius.only (topLeft: Radius.elliptical((screenWidth/2), (screenWidth/4)), topRight: Radius.elliptical((screenWidth/2),(screenWidth/4))),
+                 ),
+
+                    ),
+             ),
+              Align(
+                alignment: Alignment(-0.5, 0.0),
+                child: FloatingActionButton(
+                  heroTag: 2,
+                  backgroundColor: Colors.grey,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HistoryScreen()));
+                  },
+                  child: Icon(Icons.assessment),
                 ),
               ),
-           // ),
+              Align(
+                alignment: Alignment(0.5, 0),
+                child: Container(
+                  //alignment: Alignment(-1, 0),
+                  child: FloatingActionButton(
+                    heroTag: 3,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => InfoScreen()));
+                    },
+                    child: Icon(Icons.info),
+                  ),
+                ),
+              )
+            ],
+
           ),
         ],
       ),
