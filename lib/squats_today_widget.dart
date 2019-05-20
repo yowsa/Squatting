@@ -61,7 +61,7 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
     return Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 50.0),
+          padding: const EdgeInsets.only(top: 120.0),
           child: Container(
             height: 300.0,
             width: screenWidth,
@@ -100,13 +100,16 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
           ),
         ),
         
-        Container(
-          child: Text(
-            '$valueMinLeft out of $goal minutes left',
-            style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
+        Padding(
+          padding: const EdgeInsets.only(top:18.0),
+          child: Container(
+            child: Text(
+              '$valueMinLeft out of $goal minutes left',
+              style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
         )
       ],

@@ -30,10 +30,7 @@ class StopwatchState extends State<StopwatchWidget> {
     double screenHeight = MediaQuery.of(context).size.height;
     return Stack(
       children: [
-        Container(
-          height: (screenHeight / 4),
-          width: screenWidth,
-        ),
+
         /*Positioned(
           bottom: 0.0,
           left: -(screenWidth / 2),
@@ -54,7 +51,7 @@ class StopwatchState extends State<StopwatchWidget> {
           ),
         ),*/
         Align(
-            alignment: Alignment(0.0, 0.5),
+            alignment: Alignment(0.0, 0.4),
             child: Text(
               _time,
               style: TextStyle(
@@ -63,7 +60,7 @@ class StopwatchState extends State<StopwatchWidget> {
                   fontWeight: FontWeight.bold),
             )),
         Align(
-          alignment: Alignment(0.0, 0.1),
+          alignment: Alignment(0.0, 0.0),
           child: FloatingActionButton(
             child: Icon(
               Icons.play_arrow,
@@ -75,7 +72,7 @@ class StopwatchState extends State<StopwatchWidget> {
           ),
         ),
         Align(
-          alignment: Alignment(0.5, 0.15),
+          alignment: Alignment(0.5, 0.05),
           child: FloatingActionButton(
               child: Icon(
                 Icons.stop,
@@ -86,7 +83,7 @@ class StopwatchState extends State<StopwatchWidget> {
               heroTag: 0),
         ),
         Align(
-          alignment: Alignment(-0.5, 0.15),
+          alignment: Alignment(-0.5, 0.05),
           child: FloatingActionButton(
             child: Icon(
               Icons.replay,

@@ -19,12 +19,17 @@ class ModalSheetState extends State<ModalSheet> {
       children: <Widget>[
         RaisedButton(
           onPressed: () => modal.mainBottomSheet(context),
-          child: Text('ADD TIME', style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
+          child: Text(
+            'ADD TIME',
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+          ),
           color: mainColor,
           splashColor: accentColor,
           textColor: Colors.white,
-          padding: EdgeInsets.only(left: 50.0, right: 50.0, top: 10.0, bottom: 10.0),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(18.0))),
+          padding:
+              EdgeInsets.only(left: 50.0, right: 50.0, top: 10.0, bottom: 10.0),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(18.0))),
         ),
       ],
     );
@@ -77,94 +82,117 @@ class StatefulScreenState extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    double ovalHeight = ((screenHeight * 0.50) / 2) - 30.0;
+    double ovalWidth = screenWidth * 2;
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Spacer(flex: 5),
-              ButtonTheme(
-                minWidth: 140.0,
-                child: RaisedButton(
-                    child: Text('Timer', style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),),
-                    color: timerButtonColor,
-                    textColor: timerButtonTextColor,
-                    splashColor: timerSplashColor,
-                    padding: EdgeInsets.only(left: 0.0, right: 0.0, top: 10.0, bottom: 10.0),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(18.0))),
-                    onPressed: () {
-                      if (timerState) {
-                      } else {
-                        boop();
-                      }
-                    }),
-              ),
-              Spacer(flex: 1),
-              ButtonTheme(
-                minWidth: 140.0,
-                child: RaisedButton(
-                    child: Text('Timer Picker', style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),),
-                    color: timePickerButtonColor,
-                    textColor: timePickerButtonTextColor,
-                    splashColor: timePickerSplashColor,
-                    padding: EdgeInsets.only(left: 0.0, right: 0.0, top: 10.0, bottom: 10.0),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(18.0))),
-                    onPressed: () {
-                      if (timerState) {
-                        boop();
-                      } else {}
-                    }),
-              ),
-              Spacer(flex: 5),
-            ],
-          ),
           Stack(
             children: <Widget>[
               Container(
-                height: (screenHeight/3),
+                height: (screenHeight * 0.45),
                 width: screenWidth,
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: (screenHeight / 4),
-                  width: screenWidth,
-                ),
               ),
               Positioned(
                 bottom: 0.0,
                 left: -(screenWidth / 2),
                 child: ClipRect(
                   child: Container(
-                    height: (screenHeight / 4) - 25.0,
-                    width: screenWidth * 2,
+                    height: ovalHeight,
+                    width: ovalWidth,
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft:
-                          Radius.elliptical((screenWidth), (screenWidth / 2)),
+                              Radius.elliptical((ovalWidth), (ovalWidth / 3)),
                           topRight:
-                          Radius.elliptical((screenWidth), (screenWidth / 2))),
+                              Radius.elliptical((ovalWidth), (ovalWidth / 3))),
                     ),
                   ),
                 ),
               ),
-             Row(
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Center(child: Text('Use the timer or time picker to log time', style: TextStyle(color: textColor),)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top:60.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ButtonTheme(
+                      minWidth: 140.0,
+                      child: RaisedButton(
+                          child: Text(
+                            'Timer',
+                            style: TextStyle(
+                                fontSize: 14.0, fontWeight: FontWeight.bold),
+                          ),
+                          color: timerButtonColor,
+                          textColor: timerButtonTextColor,
+                          splashColor: timerSplashColor,
+                          padding: EdgeInsets.only(
+                              left: 0.0, right: 0.0, top: 10.0, bottom: 10.0),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(18.0))),
+                          onPressed: () {
+                            if (timerState) {
+                            } else {
+                              boop();
+                            }
+                          }),
+                    ),
+                    SizedBox(
+                      width: 20.0,
+                    ),
+                    ButtonTheme(
+                      minWidth: 140.0,
+                      child: RaisedButton(
+                          child: Text(
+                            'Timer Picker',
+                            style: TextStyle(
+                                fontSize: 14.0, fontWeight: FontWeight.bold),
+                          ),
+                          color: timePickerButtonColor,
+                          textColor: timePickerButtonTextColor,
+                          splashColor: timePickerSplashColor,
+                          padding: EdgeInsets.only(
+                              left: 0.0, right: 0.0, top: 10.0, bottom: 10.0),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(18.0))),
+                          onPressed: () {
+                            if (timerState) {
+                              boop();
+                            } else {}
+                          }),
+                    ),
+                  ],
+                ),
+              ),
+
+              Row(
                 children: <Widget>[
                   Visibility(
-                      visible: timerState, child: Expanded(child: StopwatchWidget())),
+                      visible: timerState,
+                      child: Container(
+                          height: screenHeight * 0.45,
+                          width: screenWidth,
+                          child: StopwatchWidget())),
                   Visibility(
                     visible: timePickerState,
-                    child: Expanded(child: TimerPickerWidget()),
+                    child: Container(
+                        height: screenHeight * 0.45,
+                        width: screenWidth,
+                        child: TimerPickerWidget()),
                   ),
                 ],
               ),
-
             ],
           ),
-
         ],
       ),
     );
@@ -175,18 +203,16 @@ class Modal {
   bool state = true;
   mainBottomSheet(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    print(screenHeight);
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
           return Container(
             // TODO: Make flexible height based on screen
-            height: (screenHeight/3),
+            height: (screenHeight * 0.45),
             child: StatefulScreen(),
           );
 
-
-            /*Column(
+          /*Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Expanded(

@@ -29,18 +29,9 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        /*
-        Expanded(
-          child: FloatingActionButton(
-              child: Icon(Icons.add),
-              heroTag: 3,
-              onPressed: () {
-                Navigator.pop(context);
-                addSquat(initialTimer);
-              }),
-        ),*/
 
-        Container(height: 100.0,child: time()),
+        Align(
+            alignment: Alignment(0.0, 0.5),child: Container(height: 100.0,child: time())),
         Align(
           alignment: Alignment(0.0, 0.8),
           child: SizedBox(

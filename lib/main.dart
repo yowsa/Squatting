@@ -30,6 +30,8 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    double ovalHeight = ((screenHeight * 0.50) / 2) - 30.0;
+    double ovalWidth = screenWidth * 2;
     double iconSize = 25.0;
     var circularChart = SquatsCircularChartWidget(key: chartKey);
     return Scaffold(
@@ -59,16 +61,15 @@ class MainScreen extends StatelessWidget {
 
                 child: ClipRect (
                   child: Container(
-                    // TODO: sort out what the iconheight is and divide that by two and withdraw that here rather than a solid 25
-                    height: (screenHeight/4)-25.0,
-                    width: screenWidth*2,
+                    height: ovalHeight,
+                    width: ovalWidth,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.elliptical(
-                              (screenWidth), (screenWidth / 2)),
+                              (ovalWidth), (ovalWidth / 3)),
                           topRight: Radius.elliptical(
-                              (screenWidth), (screenWidth / 2))),
+                              (ovalWidth), (ovalWidth / 3))),
                     ),
                   ),
                 ),
