@@ -1,6 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import 'package:squat_mobility/squats_today_widget.dart';
 import 'package:squat_mobility/main.dart';
 
 // Global variable that holds all squats (dict/map)

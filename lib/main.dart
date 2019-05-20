@@ -3,7 +3,6 @@ import 'info_screen.dart';
 import 'history_screen.dart';
 import 'track_time_screen.dart';
 import 'squats_today_widget.dart';
-import 'routes_widget.dart';
 import 'design_elements.dart';
 
 final chartKey = GlobalKey<SquatsCircularChartState>();
@@ -31,69 +30,89 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    double iconSize = 25.0;
     var circularChart = SquatsCircularChartWidget(key: chartKey);
     return Scaffold(
       backgroundColor: backgroundColor,
-     /* appBar: AppBar(
+      /* appBar: AppBar(
         backgroundColor: menuColor,
         title: Text('SQUATTING'),
       ),*/
       body: Column(
         children: <Widget>[
-          FractionallySizedBox(
+          Container(
             child: circularChart,
           ),
+          Spacer(flex: 1,),
           Expanded(
             child: ModalSheet(),
           ),
           Stack(
             children: <Widget>[
               Container(
-                color: Colors.red,
-                height: 275.0,
+                height: (screenHeight/4),
                 width: screenWidth,
               ),
-             Positioned(
-               bottom: 0.0,
-               left: 0.0,
-               child: Container(
-                      height: 250.0,
-                      width: screenWidth,
-                 decoration: BoxDecoration(
-                   color: Colors.orangeAccent,
-                   borderRadius: BorderRadius.only (topLeft: Radius.elliptical((screenWidth/2), (screenWidth/4)), topRight: Radius.elliptical((screenWidth/2),(screenWidth/4))),
-                 ),
+              Positioned(
+                bottom: 0.0,
+                left: -(screenWidth/2),
 
+                child: ClipRect (
+                  child: Container(
+                    // TODO: sort out what the iconheight is and divide that by two and withdraw that here rather than a solid 25
+                    height: (screenHeight/4)-25.0,
+                    width: screenWidth*2,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.elliptical(
+                              (screenWidth), (screenWidth / 2)),
+                          topRight: Radius.elliptical(
+                              (screenWidth), (screenWidth / 2))),
                     ),
-             ),
-              Align(
-                alignment: Alignment(-0.5, 0.0),
-                child: FloatingActionButton(
-                  heroTag: 2,
-                  backgroundColor: Colors.grey,
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HistoryScreen()));
-                  },
-                  child: Icon(Icons.assessment),
+                  ),
                 ),
               ),
               Align(
-                alignment: Alignment(0.5, 0),
-                child: Container(
+                alignment: Alignment(-0.5, 0),
+                //child: Container(
                   //alignment: Alignment(-1, 0),
+                  child: SizedBox(
+                    height: (screenWidth/6),
+                    width: (screenWidth/6),
+                    child: FloatingActionButton(
+                      heroTag: 3,
+                      backgroundColor: mainColor,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => InfoScreen()));
+                      },
+                      child: Icon(Icons.info),
+                    ),
+                 // ),
+                ),
+              ),
+              Align(
+                alignment: Alignment(0.5, 0.0),
+                child: SizedBox(
+                  height: (screenWidth/6),
+                  width: (screenWidth/6),
                   child: FloatingActionButton(
-                    heroTag: 3,
+                    heroTag: 2,
+                    backgroundColor: mainColor,
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => InfoScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HistoryScreen()));
                     },
-                    child: Icon(Icons.info),
+                    child: Icon(Icons.assessment),
                   ),
                 ),
-              )
+              ),
             ],
-
           ),
         ],
       ),

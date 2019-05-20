@@ -12,7 +12,7 @@ class SquatsCircularChartWidget extends StatefulWidget {
 class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
   final GlobalKey<AnimatedCircularChartState> _chartKey =
       GlobalKey<AnimatedCircularChartState>();
-  final _chartSize = Size(300.0, 300.0);
+  final _chartSize = Size(350.0, 350.0);
   String today; // = DateTime.now().toString().substring(0, 10);
   var goal = 30;
   var value; // = sumSquats(today).toDouble();
@@ -48,35 +48,66 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
           value,
           dialColor,
           rankKey: 'percentage',
-        )
-      ], rankKey: 'percentage'),
+        ),
+      ], rankKey: 'percentage'
+      ),
     ];
     return data;
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    double screenWidth = MediaQuery.of(context).size.width;
     return Column(
       children: <Widget>[
-        Container(
-          child: AnimatedCircularChart(
-            key: _chartKey,
-            size: _chartSize,
-            initialChartData: _generateChartData(value),
-            chartType: CircularChartType.Radial,
-            edgeStyle: SegmentEdgeStyle.round,
-            percentageValues: true,
-            holeLabel: '$valueMin' + ' min',
-            labelStyle: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 34.0,
-            ),
+        Padding(
+          padding: const EdgeInsets.only(top: 50.0),
+          child: Container(
+            height: 300.0,
+            width: screenWidth,
+            child: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment(0.0, 0.0),
+                child: ClipOval(
+                  child: Container(
+                    color: Colors.white,
+                    height: 255.0,
+                    width: 255.0,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment(0.0, 0.0),
+                child: AnimatedCircularChart(
+
+                  key: _chartKey,
+                  size: _chartSize,
+                  initialChartData: _generateChartData(value),
+                  chartType: CircularChartType.Radial,
+                  edgeStyle: SegmentEdgeStyle.round,
+                  percentageValues: true,
+                  holeLabel: '$valueMin' + ' min',
+                  labelStyle: TextStyle(
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 34.0,
+                  ),
+                ),
+              ),
+            ],
+    ),
           ),
         ),
+        
         Container(
-          child: Text('$valueMinLeft out of $goal minutes left'),
+          child: Text(
+            '$valueMinLeft out of $goal minutes left',
+            style: TextStyle(
+                fontSize: 16.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
+          ),
         )
       ],
     );

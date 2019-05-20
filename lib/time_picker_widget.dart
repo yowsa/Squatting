@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'save_squats.dart';
-import 'track_time_screen.dart';
+import 'package:squat_mobility/design_elements.dart';
 
 class TimerPickerWidget extends StatefulWidget {
   @override
@@ -27,21 +27,52 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: FloatingActionButton(
-                child: Icon(Icons.add),
-                heroTag: 3,
-                onPressed: () {
-                  Navigator.pop(context);
-                  addSquat(initialTimer);
-                }),
+    return Stack(
+      children: <Widget>[
+        /*
+        Expanded(
+          child: FloatingActionButton(
+              child: Icon(Icons.add),
+              heroTag: 3,
+              onPressed: () {
+                Navigator.pop(context);
+                addSquat(initialTimer);
+              }),
+        ),*/
+
+        Container(height: 100.0,child: time()),
+        Align(
+          alignment: Alignment(0.0, 0.8),
+          child: SizedBox(
+            width: 150.0,
+            child: RaisedButton(
+              onPressed: () {
+                Navigator.pop(context);
+                addSquat(initialTimer);
+
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(Icons.add_circle_outline, size: 15.0,),
+                  Text(
+                    ' ADD TIME',
+                    style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              color: backgroundColor,
+              splashColor: accentColor,
+              textColor: textColor,
+              //padding:
+              //    EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0, bottom: 10.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(18.0))),
+            ),
           ),
-          Expanded(child: time()),
-        ],
-      ),
+        ),
+      ],
     );
+
   }
 }
