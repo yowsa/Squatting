@@ -8,7 +8,7 @@ history() {
   List historySumDouble = [];
   List historySum = <Widget>[];
   allSquats['squats'].forEach((k, v) {
-    historyView.add(Text(k, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)));
+    historyView.add(Text(k, style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 18.0)));
   });
 
   historyView.sort((a, b) => b.data.compareTo(a.data));
@@ -21,7 +21,7 @@ history() {
     shrinkWrap: true,
     itemCount: historyView.length,
     itemBuilder: (BuildContext context, int index) {
-      historySum.add(Text(sumSquats(historyView[index].data).toString() + ' min', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)));
+      historySum.add(Text(sumSquats(historyView[index].data).toString() + ' min', style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 18.0)));
       double fullWidth = MediaQuery.of(context).size.width;
       double squatPercentageWidth;
       if ((fullWidth * historySumDouble[index]) > fullWidth) {
@@ -36,7 +36,7 @@ history() {
             height: 55.0,
             width: fullWidth,
             decoration: BoxDecoration(
-              color: accentColor,
+              color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
             ),
           ),

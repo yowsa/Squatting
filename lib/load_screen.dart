@@ -7,7 +7,7 @@ import 'package:squat_mobility/design_elements.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> sleep() async {
-  return Future.delayed(Duration(seconds: 1));
+  return Future.delayed(Duration(seconds: 3));
 }
 
 
@@ -32,11 +32,18 @@ void main() async {
 class LoadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var backgroundLogo = AssetImage('assets/test-image.png');
+    var image = Image(image: backgroundLogo, width: 100.0, height: 100.0,)
     // TODO: implement build
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
-        child: Text('Load Screen'),
+        child: Column(
+          children: <Widget>[
+            Text('loading', style: TextStyle(fontSize: 65),),
+            Container(child: image,),
+          ],
+        ),
       ),
     );
   }
