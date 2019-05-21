@@ -4,6 +4,9 @@ import 'history_screen.dart';
 import 'track_time_screen.dart';
 import 'squats_today_widget.dart';
 import 'design_elements.dart';
+import 'package:squat_mobility/welcome_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 final chartKey = GlobalKey<SquatsCircularChartState>();
 
@@ -20,9 +23,9 @@ void main() async {
       ? runApp(MaterialApp(title: 'Navigation Basics', home: WelcomeScreen()))
       : runApp(MaterialApp(title: 'Navigation Basics', home: MainScreen()));
 
-  loadSquats();
-}
-*/
+  //loadSquats();
+}*/
+
 class MainScreen extends StatelessWidget {
   final String today = DateTime.now().toString().substring(0, 10);
   //final Modal modal = Modal();
