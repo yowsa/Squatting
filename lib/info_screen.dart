@@ -13,10 +13,91 @@ class InfoScreen extends StatelessWidget {
         body: ListView(
           children: <Widget>[
             InfoSection(
-                headline: 'hejsan',
-                text:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
-            InfoSection(headline: 'test', text: 'test')
+                headline: 'GUIDELINES',
+                bulletText: Column(
+                  children: <Widget>[
+                    BulletText(
+                      iconTrueFalse: true,
+                      text:
+                          'The goal is to sit in a resting squat position for a total of 30 minutes each day.',
+                      icon: Icons.lens,
+                    ),
+                    BulletText(
+                      iconTrueFalse: true,
+                      text:
+                          'Split the time up as needed. Start with smaller sessions, such as 30-90 seconds at a time, for the hips to get used to the position.',
+                      icon: Icons.lens,
+                    ),
+                    BulletText(
+                      iconTrueFalse: true,
+                      text: 'If something hurts, STOP!',
+                      icon: Icons.lens,
+                    ),
+                    InfoImage(imagePath: 'assets/game.jpg')
+                  ],
+                )),
+            InfoSection(
+                headline: 'WHY SQUAT?',
+                bulletText: Column(
+                  children: <Widget>[
+                    BulletText(
+                        text:
+                            'Resting in a squat position daily increases hip, ankle and back mobility, which many are lacking due to today’s sitting culture.',
+                        iconTrueFalse: false),
+                  ],
+                )),
+            InfoSection(
+                headline: 'HOW TO SQUAT',
+                bulletText: Column(
+                  children: <Widget>[
+                    BulletText(
+                      text:
+                          'Feet roughly shoulder width apart with toes pointing slightly outwards, adjust as needed to comfortably fit your body.',
+                      iconTrueFalse: true,
+                      icon: Icons.lens,
+                    ),
+                    BulletText(
+                      text: 'Relaxed spine.',
+                      iconTrueFalse: true,
+                      icon: Icons.lens,
+                    ),
+                    BulletText(
+                      text: 'Sit as deep as you can.',
+                      iconTrueFalse: true,
+                      icon: Icons.lens,
+                    ),
+                    BulletText(
+                      text: 'Keep your heels on the floor.',
+                      iconTrueFalse: true,
+                      icon: Icons.lens,
+                    ),
+                    InfoImage(imagePath: 'assets/test-image.png',),
+                  ],
+                )),
+            InfoSection(
+                headline: 'I CAN\'T SQUAT',
+                bulletText: Column(
+                  children: <Widget>[
+                    BulletText(
+                      text:
+                          'If you can’t squat down low, start slow and work yourself there. ',
+                      iconTrueFalse: true,
+                      icon: Icons.lens,
+                    ),
+                    BulletText(
+                      text:
+                          'If you’re falling backwards, try holding onto something.',
+                      iconTrueFalse: true,
+                      icon: Icons.lens,
+                    ),
+                    BulletText(
+                      text:
+                          'If you can’t get low enough with your heels flat,, prop something under your heels.',
+                      iconTrueFalse: true,
+                      icon: Icons.lens,
+                    ),
+                  ],
+                )),
           ],
         ));
   }
@@ -24,17 +105,17 @@ class InfoScreen extends StatelessWidget {
 
 class InfoSection extends StatelessWidget {
   final headline;
-  final text;
+  //final text;
   final image;
+  final bulletText;
 
   const InfoSection({
     @required this.headline,
-    @required this.text,
+    // @required this.text,
+    @required this.bulletText,
     this.image,
   });
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Stack(
@@ -44,8 +125,10 @@ class InfoSection extends StatelessWidget {
                 color: Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      top: 30, right: 20, bottom: 20, left: 20),
-                  child: Text(text, style: TextStyle(color: textColor, height: 1.5),),
+                      top: 40, right: 25, bottom: 25, left: 25),
+                  child: Container(
+                    child: bulletText,
+                  ),
                 ),
                 margin: EdgeInsets.all(30),
                 elevation: 6.0,
@@ -59,7 +142,7 @@ class InfoSection extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(18))),
               child: SizedBox(
-                width:150,
+                width: 150,
                 height: 50,
                 child: Center(
                   child: Text(
@@ -73,45 +156,72 @@ class InfoSection extends StatelessWidget {
               ),
             ),
           ),
-          /* Align(
-            alignment: Alignment.topCenter,
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 30.0,
-                ),
-                Container(
-                  child: Text(text),
-                  width: screenWidth - 40,
-                  padding:
-                      EdgeInsets.only(top: 30, right: 20, bottom: 20, left: 20),
-                  decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.all(Radius.circular(18))),
-                ),
-              ],
-            ),
-          ),*/
-          /* Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              child: Center(
-                  child: Text(
-                headline,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 18),
-              )),
-              height: 50,
-              width: 150,
-              decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.all(Radius.circular(18))),
-            ),
-          ),*/
         ],
       ),
+    );
+  }
+}
+
+class BulletText extends StatelessWidget {
+  final icon;
+  final text;
+  final iconTrueFalse;
+
+  BulletText({
+    @required this.text,
+    @required this.iconTrueFalse,
+    this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Visibility(
+            visible: iconTrueFalse,
+            child: Container(
+              padding: EdgeInsets.only(top: 7.0, right: 5.0),
+              child: Icon(
+                icon,
+                size: 8.0,
+                color: menuColor,
+              ),
+            )),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom:10.0),
+            child: Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 18.0,
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class InfoImage extends StatelessWidget {
+  final imagePath;
+
+  InfoImage({
+    @required this.imagePath,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    var thisImage = AssetImage(imagePath);
+    var image = Image(
+      image: thisImage,
+      width: 100.0,
+      height: 100.0,
+    );
+    return Container(
+      child: image,
     );
   }
 }

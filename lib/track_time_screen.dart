@@ -27,7 +27,7 @@ class ModalSheetState extends State<ModalSheet> {
           splashColor: accentColor,
           textColor: Colors.white,
           padding:
-              EdgeInsets.only(left: 50.0, right: 50.0, top: 10.0, bottom: 10.0),
+              EdgeInsets.only(left: 50.0, right: 50.0, top: 15.0, bottom: 15.0),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(18.0))),
         ),
@@ -48,7 +48,7 @@ class StatefulScreenState extends State<StatefulWidget> {
   bool timerState = true;
   bool timePickerState = false;
   Color timerButtonColor = Colors.white;
-  Color timerButtonTextColor = textColor;
+  Color timerButtonTextColor = backgroundColor;
   Color timerSplashColor = Colors.transparent;
   Color timePickerButtonColor = mainColor;
   Color timePickerButtonTextColor = Colors.white;
@@ -63,13 +63,13 @@ class StatefulScreenState extends State<StatefulWidget> {
         timerButtonTextColor = Colors.white;
         timerSplashColor = accentColor;
         timePickerButtonColor = Colors.white;
-        timePickerButtonTextColor = textColor;
+        timePickerButtonTextColor = backgroundColor;
         timePickerSplashColor = Colors.transparent;
       } else {
         timerState = true;
         timePickerState = false;
         timerButtonColor = Colors.white;
-        timerButtonTextColor = textColor;
+        timerButtonTextColor = backgroundColor;
         timerSplashColor = Colors.transparent;
         timePickerButtonColor = mainColor;
         timePickerButtonTextColor = Colors.white;

@@ -35,7 +35,6 @@ class MainScreen extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double ovalHeight = ((screenHeight * 0.50) / 2) - 30.0;
     double ovalWidth = screenWidth * 2;
-    double iconSize = 25.0;
     var circularChart = SquatsCircularChartWidget(key: chartKey);
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -46,12 +45,22 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            child: circularChart,
+            height: screenHeight*0.75,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Container(
+                child: circularChart,
+              ),
+              //Spacer(flex: 1,),
+              Container(
+                height: 60.0,
+                child: ModalSheet(),
+              ),
+        ],
+      ),
           ),
-          Spacer(flex: 1,),
-          Expanded(
-            child: ModalSheet(),
-          ),
+
           Stack(
             children: <Widget>[
               Container(

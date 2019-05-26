@@ -25,8 +25,6 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
     value = (sumSquats(today).toDouble()) * 3.3333333;
     valueMin = sumSquats(today);
     valueMinLeft = goal - valueMin;
-    // todayValue();
-    //print(todayValue());
   }
 
   void squatsCircularChartSetState() {
@@ -55,15 +53,33 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
     return data;
   }
 
+  chartText() {
+    if (valueMinLeft > 0) {
+      return '$valueMinLeft out of $goal minutes left';
+    } else {
+      return 'You have reached your goal for today';
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double chartBox = 300.0;
+    var backgroundLogo = AssetImage('assets/light-logo.png');
+    var image = Image(
+      image: backgroundLogo,
+      width: 200.0,
+      height: 200.0,
+    );
     return Column(
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 120.0),
-          child: Container(
-            height: 300.0,
+        //Padding(
+          //padding: EdgeInsets.only(top: screenHeight/5),
+        //  child:
+          Container(
+            height: chartBox,
             width: screenWidth,
             child: Stack(
             children: <Widget>[
@@ -74,6 +90,7 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
                     color: Colors.white,
                     height: 255.0,
                     width: 255.0,
+                    child: image,
                   ),
                 ),
               ),
@@ -98,18 +115,17 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
             ],
     ),
           ),
-        ),
+        //),
         
-        Padding(
-          padding: const EdgeInsets.only(top:18.0),
-          child: Container(
-            child: Text(
-              '$valueMinLeft out of $goal minutes left',
-              style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-            ),
+        Container(
+          height: screenHeight*0.06,
+          alignment: Alignment.center,
+          child: Text(
+            chartText(),
+            style: TextStyle(
+                fontSize: 16.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
           ),
         )
       ],

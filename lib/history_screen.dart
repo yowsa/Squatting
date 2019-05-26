@@ -5,13 +5,24 @@ import 'package:squat_mobility/design_elements.dart';
 
 history() {
   List historyView = <Widget>[];
+  List testList = [];
+  List writtenDateView = <Widget>[];
   List historySumDouble = [];
   List historySum = <Widget>[];
   allSquats['squats'].forEach((k, v) {
+    testList.add(k);
     historyView.add(Text(k, style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 18.0)));
   });
 
   historyView.sort((a, b) => b.data.compareTo(a.data));
+  testList.sort((a,b) => b.compareTo(a));
+
+  testList.forEach((f) {
+    DateTime date = DateTime.parse(f);
+   String formattedDate = DateFormat('MMMMd').format(date);
+    writtenDateView.add(Text(formattedDate, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)));
+  });
+
 
   historyView.forEach((f) {
     historySumDouble.add(sumSquats(f.data) / 30);
@@ -21,7 +32,7 @@ history() {
     shrinkWrap: true,
     itemCount: historyView.length,
     itemBuilder: (BuildContext context, int index) {
-      historySum.add(Text(sumSquats(historyView[index].data).toString() + ' min', style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 18.0)));
+      historySum.add(Text(sumSquats(historyView[index].data).toString() + ' min', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)));
       double fullWidth = MediaQuery.of(context).size.width;
       double squatPercentageWidth;
       if ((fullWidth * historySumDouble[index]) > fullWidth) {
@@ -32,41 +43,45 @@ history() {
 
       return Stack(
         children: <Widget>[
-          Container(
-            height: 55.0,
-            width: fullWidth,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            elevation: 5.0,
+            color: accentColor,
+            child: Container(
+              height: 55,
+              width: fullWidth,
             ),
           ),
-          Container(
-            height: 55.0,
-            width: squatPercentageWidth,
-            decoration: BoxDecoration(
-              color: mainColor,
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            elevation: 0.0,
+            color: mainColor,
+            child: Container(
+              height: 55,
+              width: squatPercentageWidth,
             ),
           ),
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+              padding: const EdgeInsets.only(left: 18.0),
               child: Container(
                 alignment: Alignment(-1.0, 0.0),
-                height: 55.0,
+                height: 60.0,
                 width: (fullWidth / 2),
-                child: historyView[index],
+                child: writtenDateView[index],
               ),
             ),
           ),
           Align(
             alignment: Alignment.topRight,
             child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: const EdgeInsets.only(right: 18.0),
               child: Container(
                 alignment: Alignment(1.0, 0.0),
-                height: 55.0,
+                height: 60.0,
                 width: (fullWidth / 2),
                 child: historySum[index],
               ),
