@@ -47,33 +47,43 @@ class StatefulScreen extends StatefulWidget {
 class StatefulScreenState extends State<StatefulWidget> {
   bool timerState = true;
   bool timePickerState = false;
-  Color timerButtonColor = Colors.white;
-  Color timerButtonTextColor = backgroundColor;
-  Color timerSplashColor = Colors.transparent;
-  Color timePickerButtonColor = mainColor;
-  Color timePickerButtonTextColor = Colors.white;
-  Color timePickerSplashColor = accentColor;
+  Color timerButtonColor = mainColor;
+  Color timerButtonTextColor = Colors.white;
+  Color timerSplashColor = accentColor;
+
+
+  Color timePickerButtonColor = Colors.white;
+  Color timePickerButtonTextColor = textColor;
+  Color timePickerSplashColor = Colors.transparent;
+  double timerButtonElevation = 0.0;
+  double timePickerButtonElevation = 3.0;
 
   void boop() {
     setState(() {
       if (timerState) {
         timerState = false;
         timePickerState = true;
-        timerButtonColor = mainColor;
-        timerButtonTextColor = Colors.white;
-        timerSplashColor = accentColor;
-        timePickerButtonColor = Colors.white;
-        timePickerButtonTextColor = backgroundColor;
-        timePickerSplashColor = Colors.transparent;
-      } else {
-        timerState = true;
-        timePickerState = false;
         timerButtonColor = Colors.white;
-        timerButtonTextColor = backgroundColor;
+        timerButtonTextColor = textColor;
         timerSplashColor = Colors.transparent;
         timePickerButtonColor = mainColor;
         timePickerButtonTextColor = Colors.white;
         timePickerSplashColor = accentColor;
+        timerButtonElevation = 3.0;
+        timePickerButtonElevation = 0.0;
+
+      } else {
+        timerState = true;
+        timePickerState = false;
+
+        timerButtonColor = mainColor;
+        timerButtonTextColor = Colors.white;
+        timerSplashColor = accentColor;
+        timePickerButtonColor = Colors.white;
+        timePickerButtonTextColor = textColor;
+        timePickerSplashColor = Colors.transparent;
+        timerButtonElevation = 0.0;
+        timePickerButtonElevation = 3.0;
       }
     });
   }
@@ -115,10 +125,14 @@ class StatefulScreenState extends State<StatefulWidget> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
-                child: Center(child: Text('Use the timer or time picker to log time', style: TextStyle(color: textColor),)),
+                child: Center(
+                    child: Text(
+                  'Use the timer or time picker to log time',
+                  style: TextStyle(color: textColor),
+                )),
               ),
               Padding(
-                padding: const EdgeInsets.only(top:60.0),
+                padding: const EdgeInsets.only(top: 60.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -133,6 +147,7 @@ class StatefulScreenState extends State<StatefulWidget> {
                           color: timerButtonColor,
                           textColor: timerButtonTextColor,
                           splashColor: timerSplashColor,
+                          elevation: timerButtonElevation,
                           padding: EdgeInsets.only(
                               left: 0.0, right: 0.0, top: 10.0, bottom: 10.0),
                           shape: RoundedRectangleBorder(
@@ -159,6 +174,7 @@ class StatefulScreenState extends State<StatefulWidget> {
                           color: timePickerButtonColor,
                           textColor: timePickerButtonTextColor,
                           splashColor: timePickerSplashColor,
+                          elevation: timePickerButtonElevation,
                           padding: EdgeInsets.only(
                               left: 0.0, right: 0.0, top: 10.0, bottom: 10.0),
                           shape: RoundedRectangleBorder(
@@ -173,7 +189,6 @@ class StatefulScreenState extends State<StatefulWidget> {
                   ],
                 ),
               ),
-
               Row(
                 children: <Widget>[
                   Visibility(

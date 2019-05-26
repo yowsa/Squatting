@@ -28,7 +28,6 @@ void main() async {
 
 class MainScreen extends StatelessWidget {
   final String today = DateTime.now().toString().substring(0, 10);
-  //final Modal modal = Modal();
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -38,10 +37,6 @@ class MainScreen extends StatelessWidget {
     var circularChart = SquatsCircularChartWidget(key: chartKey);
     return Scaffold(
       backgroundColor: backgroundColor,
-      /* appBar: AppBar(
-        backgroundColor: menuColor,
-        title: Text('SQUATTING'),
-      ),*/
       body: Column(
         children: <Widget>[
           Container(
@@ -52,7 +47,6 @@ class MainScreen extends StatelessWidget {
               Container(
                 child: circularChart,
               ),
-              //Spacer(flex: 1,),
               Container(
                 height: 60.0,
                 child: ModalSheet(),
@@ -88,8 +82,6 @@ class MainScreen extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment(-0.5, 0),
-                //child: Container(
-                  //alignment: Alignment(-1, 0),
                   child: SizedBox(
                     height: (screenWidth/6),
                     width: (screenWidth/6),
@@ -104,7 +96,6 @@ class MainScreen extends StatelessWidget {
                       },
                       child: Icon(Icons.info),
                     ),
-                 // ),
                 ),
               ),
               Align(

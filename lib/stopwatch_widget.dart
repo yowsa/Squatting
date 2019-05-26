@@ -26,43 +26,45 @@ class StopwatchState extends State<StopwatchWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+   // Size iconSize;
+    double addSquatButtonPos;
+    double timePos;
+    double timeSize;
+    double iconPosAdjust;
+   // Color addTimeColor;
+    if (screenHeight < 700) {
+      addSquatButtonPos = 0.9;
+      timePos = 0.5;
+      timeSize = 30.0;
+      iconPosAdjust = 0.1;
+      //addTimeColor = accentColor;
+    } else {
+      addSquatButtonPos = 0.8;
+      timePos = 0.4;
+      timeSize = 34.0;
+      iconPosAdjust = 0.0;
+      //addTimeColor = backgroundColor;
+    }
     return Stack(
       children: [
 
-        /*Positioned(
-          bottom: 0.0,
-          left: -(screenWidth / 2),
-          child: ClipRect(
-            child: Container(
-              // TODO: sort out what the iconheight is and divide that by two and withdraw that here rather than a solid 25
-              height: (screenHeight / 4) - 25.0,
-              width: screenWidth * 2,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft:
-                        Radius.elliptical((screenWidth), (screenWidth / 2)),
-                    topRight:
-                        Radius.elliptical((screenWidth), (screenWidth / 2))),
-              ),
-            ),
-          ),
-        ),*/
         Align(
-            alignment: Alignment(0.0, 0.4),
+            alignment: Alignment(0.0, timePos),
             child: Text(
               _time,
               style: TextStyle(
-                  fontSize: 34.0,
+                  fontSize: timeSize,
                   color: textColor,
                   fontWeight: FontWeight.bold),
             )),
         Align(
-          alignment: Alignment(0.0, 0.0),
+          alignment: Alignment(0.0, (0.0+iconPosAdjust)),
           child: FloatingActionButton(
             child: Icon(
               Icons.play_arrow,
               color: textColor,
+
             ),
             onPressed: testTimer.stopwatchStart,
             backgroundColor: Colors.white,
@@ -70,7 +72,7 @@ class StopwatchState extends State<StopwatchWidget> {
           ),
         ),
         Align(
-          alignment: Alignment(0.5, 0.05),
+          alignment: Alignment(0.5, (0.05 + iconPosAdjust)),
           child: FloatingActionButton(
               child: Icon(
                 Icons.stop,
@@ -81,7 +83,7 @@ class StopwatchState extends State<StopwatchWidget> {
               heroTag: 0),
         ),
         Align(
-          alignment: Alignment(-0.5, 0.05),
+          alignment: Alignment(-0.5, (0.05+iconPosAdjust)),
           child: FloatingActionButton(
             child: Icon(
               Icons.replay,
@@ -93,7 +95,7 @@ class StopwatchState extends State<StopwatchWidget> {
           ),
         ),
         Align(
-          alignment: Alignment(0.0, 0.8),
+          alignment: Alignment(0.0, addSquatButtonPos),
           child: SizedBox(
             width: 150.0,
             child: RaisedButton(
