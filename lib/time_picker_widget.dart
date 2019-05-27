@@ -28,17 +28,17 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double addSquatButtonPos;
+   // double addSquatButtonPos;
     double timePickerPos;
-    Color addTimeColor;
+    //Color addTimeColor;
     if (screenHeight < 700) {
-      addSquatButtonPos = 0.1;
+      //addSquatButtonPos = 0.1;
       timePickerPos = 1.0;
-      addTimeColor = accentColor;
+     // addTimeColor = Colors.white;
     } else {
-      addSquatButtonPos = 0.8;
-      timePickerPos = 0.5;
-      addTimeColor = backgroundColor;
+      //addSquatButtonPos = 0.7;
+      timePickerPos = 0.7;
+      //addTimeColor = backgroundColor;
     }
     return Stack(
       children: <Widget>[
@@ -46,7 +46,7 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
         Align(
             alignment: Alignment(0.0, timePickerPos),child: Container(height: 100.0,child: time())),
         Align(
-          alignment: Alignment(0.0, addSquatButtonPos),
+          alignment: Alignment(0.0, 0.1),
           child: SizedBox(
             width: 150.0,
             child: RaisedButton(
@@ -61,11 +61,11 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
                   Icon(Icons.add_circle_outline, size: 15.0,),
                   Text(
                     ' ADD TIME',
-                    style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-              color: addTimeColor,
+              color: Colors.white,
               splashColor: accentColor,
               textColor: textColor,
               //padding:

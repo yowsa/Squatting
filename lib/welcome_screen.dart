@@ -18,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double ovalHeight = (screenHeight * 0.70) / 2;
     double bottomPosition;
-    if (screenHeight < 700) {
+    if (screenHeight < 800) {
       ovalHeight = 300.0;
       bottomPosition = (screenHeight/2)-150.0;
     }else {

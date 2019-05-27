@@ -16,17 +16,16 @@ void main() async {
 
   final newUser = prefs.getBool('newUser') ?? true;
   // TODO: remove line below so the saved prefs for welcome screen doesn't reset every other time
-  prefs.remove('newUser');
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_){
+  //prefs.remove('newUser');
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
     runApp(MaterialApp(title: 'Load Screen', home: LoadScreen()));
   });
-
 
   await loadSquats();
   if (newUser == false) {
     historyList();
   }
-  ;
 
   await sleep();
 
@@ -66,39 +65,31 @@ class LoadScreen extends StatelessWidget {
           ),
           Positioned(
             //alignment: Alignment.center,
-            top: (screenHeight-ovalHeight)/2,
+            top: (screenHeight - ovalHeight) / 2,
             left: -(screenWidth / 2),
 
             child: ClipRect(
               child: Container(
                 height: ovalHeight,
                 width: ovalWidth,
-                padding: EdgeInsets.only(top: ovalHeight*0.15, bottom: 30.0),
+                padding: EdgeInsets.only(top: ovalHeight * 0.15, bottom: 30.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.elliptical((ovalWidth), (ovalWidth / 3)),
                       bottomLeft:
-                      Radius.elliptical((ovalWidth), (ovalWidth / 3)),
+                          Radius.elliptical((ovalWidth), (ovalWidth / 3)),
                       bottomRight:
-                      Radius.elliptical((ovalWidth), (ovalWidth / 3)),
+                          Radius.elliptical((ovalWidth), (ovalWidth / 3)),
                       topRight:
-                      Radius.elliptical((ovalWidth), (ovalWidth / 3))),
+                          Radius.elliptical((ovalWidth), (ovalWidth / 3))),
                 ),
                 child: image,
               ),
             ),
           ),
-
         ],
       ),
-
-
-
-
-
-
-
 
       /*
       Center(

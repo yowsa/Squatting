@@ -140,7 +140,7 @@ class StatefulScreenState extends State<StatefulWidget> {
                       minWidth: 140.0,
                       child: RaisedButton(
                           child: Text(
-                            'Timer',
+                            'TIMER',
                             style: TextStyle(
                                 fontSize: 14.0, fontWeight: FontWeight.bold),
                           ),
@@ -167,7 +167,7 @@ class StatefulScreenState extends State<StatefulWidget> {
                       minWidth: 140.0,
                       child: RaisedButton(
                           child: Text(
-                            'Timer Picker',
+                            'TIME PICKER',
                             style: TextStyle(
                                 fontSize: 14.0, fontWeight: FontWeight.bold),
                           ),
