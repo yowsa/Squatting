@@ -48,8 +48,10 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   assets:
-    - assets/test-image.png
-    - assets/game.jpg
+    - assets/form-feet-elevated.jpg
+    - assets/form-heels-up.jpg
+    - assets/form-hold-on.jpg
+    - assets/squat-good-form.jpg
     - assets/light-logo.png
     - assets/dark-logo.png
 

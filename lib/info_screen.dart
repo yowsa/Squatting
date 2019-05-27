@@ -33,7 +33,6 @@ class InfoScreen extends StatelessWidget {
                       text: 'If something hurts, STOP!',
                       icon: Icons.lens,
                     ),
-                    InfoImage(imagePath: 'assets/game.jpg')
                   ],
                 )),
             InfoSection(
@@ -71,7 +70,8 @@ class InfoScreen extends StatelessWidget {
                       iconTrueFalse: true,
                       icon: Icons.lens,
                     ),
-                    InfoImage(imagePath: 'assets/test-image.png',),
+                    InfoImage(imagePath: 'assets/squat-good-form.jpg',),
+                    InfoImage(imagePath: 'assets/form-heels-up.jpg'),
                   ],
                 )),
             InfoSection(
@@ -90,12 +90,16 @@ class InfoScreen extends StatelessWidget {
                       iconTrueFalse: true,
                       icon: Icons.lens,
                     ),
+                    InfoImage(imagePath: 'assets/form-hold-on.jpg'),
                     BulletText(
                       text:
-                          'If you can’t get low enough with your heels flat,, prop something under your heels.',
+                          'If you can’t get low enough with your heels flat, prop something under your heels such as a rolled up towel or a book.',
                       iconTrueFalse: true,
                       icon: Icons.lens,
                     ),
+                    InfoImage(imagePath: 'assets/form-feet-elevated.jpg'),
+
+
                   ],
                 )),
           ],
@@ -217,11 +221,13 @@ class InfoImage extends StatelessWidget {
     var thisImage = AssetImage(imagePath);
     var image = Image(
       image: thisImage,
-      width: 100.0,
-      height: 100.0,
     );
-    return Container(
-      child: image,
+    return Padding(
+      padding: const EdgeInsets.only(top: 5.0, bottom: 10.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: image,
+      ),
     );
   }
 }

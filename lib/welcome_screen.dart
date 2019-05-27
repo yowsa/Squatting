@@ -36,7 +36,6 @@ class WelcomeScreen extends StatelessWidget {
             height: screenHeight,
           ),
           Positioned(
-            //alignment: Alignment.center,
             bottom: bottomPosition,
             left: -(screenWidth / 2),
 
@@ -57,7 +56,6 @@ class WelcomeScreen extends StatelessWidget {
                           Radius.elliptical((ovalWidth), (ovalWidth / 3))),
                 ),
                 child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Text(
                       'WELCOME TO',
