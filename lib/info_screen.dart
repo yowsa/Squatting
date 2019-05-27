@@ -70,7 +70,9 @@ class InfoScreen extends StatelessWidget {
                       iconTrueFalse: true,
                       icon: Icons.lens,
                     ),
-                    InfoImage(imagePath: 'assets/squat-good-form.jpg',),
+                    InfoImage(
+                      imagePath: 'assets/squat-good-form.jpg',
+                    ),
                     InfoImage(imagePath: 'assets/form-heels-up.jpg'),
                   ],
                 )),
@@ -98,8 +100,6 @@ class InfoScreen extends StatelessWidget {
                       icon: Icons.lens,
                     ),
                     InfoImage(imagePath: 'assets/form-feet-elevated.jpg'),
-
-
                   ],
                 )),
           ],
@@ -109,13 +109,11 @@ class InfoScreen extends StatelessWidget {
 
 class InfoSection extends StatelessWidget {
   final headline;
-  //final text;
   final image;
   final bulletText;
 
   const InfoSection({
     @required this.headline,
-    // @required this.text,
     @required this.bulletText,
     this.image,
   });
@@ -194,7 +192,7 @@ class BulletText extends StatelessWidget {
             )),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(bottom:10.0),
+            padding: const EdgeInsets.only(bottom: 10.0),
             child: Text(
               text,
               style: TextStyle(

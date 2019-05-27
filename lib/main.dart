@@ -4,27 +4,8 @@ import 'history_screen.dart';
 import 'track_time_screen.dart';
 import 'squats_today_widget.dart';
 import 'design_elements.dart';
-import 'package:squat_mobility/welcome_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 
 final chartKey = GlobalKey<SquatsCircularChartState>();
-
-/*
-var newUser2 = true;
-
-void main() async {
-  final prefs = await SharedPreferences.getInstance();
-
-  final newUser = prefs.getBool('newUser') ?? true;
-  prefs.remove('newUser');
-
-  newUser
-      ? runApp(MaterialApp(title: 'Navigation Basics', home: WelcomeScreen()))
-      : runApp(MaterialApp(title: 'Navigation Basics', home: MainScreen()));
-
-  //loadSquats();
-}*/
 
 class MainScreen extends StatelessWidget {
   final String today = DateTime.now().toString().substring(0, 10);
@@ -40,69 +21,67 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            height: screenHeight*0.75,
+            height: screenHeight * 0.75,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Container(
-                child: circularChart,
-              ),
-              Container(
-                height: 60.0,
-                child: ModalSheet(),
-              ),
-        ],
-      ),
+              children: <Widget>[
+                Container(
+                  child: circularChart,
+                ),
+                Container(
+                  height: 60.0,
+                  child: ModalSheet(),
+                ),
+              ],
+            ),
           ),
-
           Stack(
             children: <Widget>[
               Container(
-                height: (screenHeight/4),
+                height: (screenHeight / 4),
                 width: screenWidth,
               ),
               Positioned(
                 bottom: 0.0,
-                left: -(screenWidth/2),
-
-                child: ClipRect (
+                left: -(screenWidth / 2),
+                child: ClipRect(
                   child: Container(
                     height: ovalHeight,
                     width: ovalWidth,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.elliptical(
-                              (ovalWidth), (ovalWidth / 3)),
-                          topRight: Radius.elliptical(
-                              (ovalWidth), (ovalWidth / 3))),
+                          topLeft:
+                              Radius.elliptical((ovalWidth), (ovalWidth / 3)),
+                          topRight:
+                              Radius.elliptical((ovalWidth), (ovalWidth / 3))),
                     ),
                   ),
                 ),
               ),
               Align(
                 alignment: Alignment(-0.5, 0),
-                  child: SizedBox(
-                    height: (screenWidth/6),
-                    width: (screenWidth/6),
-                    child: FloatingActionButton(
-                      heroTag: 3,
-                      backgroundColor: mainColor,
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => InfoScreen()));
-                      },
-                      child: Icon(Icons.info),
-                    ),
+                child: SizedBox(
+                  height: (screenWidth / 6),
+                  width: (screenWidth / 6),
+                  child: FloatingActionButton(
+                    heroTag: 3,
+                    backgroundColor: mainColor,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => InfoScreen()));
+                    },
+                    child: Icon(Icons.info),
+                  ),
                 ),
               ),
               Align(
                 alignment: Alignment(0.5, 0.0),
                 child: SizedBox(
-                  height: (screenWidth/6),
-                  width: (screenWidth/6),
+                  height: (screenWidth / 6),
+                  width: (screenWidth / 6),
                   child: FloatingActionButton(
                     heroTag: 2,
                     backgroundColor: mainColor,

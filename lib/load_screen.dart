@@ -32,7 +32,6 @@ void main() async {
   newUser
       ? runApp(MaterialApp(title: 'Navigation Basics', home: WelcomeScreen()))
       : runApp(MaterialApp(title: 'Navigation Basics', home: MainScreen()));
-  //(MaterialApp(title: 'Welcome Screen', home: MainScreen()));
 }
 
 class LoadScreen extends StatelessWidget {
@@ -64,10 +63,8 @@ class LoadScreen extends StatelessWidget {
             height: screenHeight,
           ),
           Positioned(
-            //alignment: Alignment.center,
             top: (screenHeight - ovalHeight) / 2,
             left: -(screenWidth / 2),
-
             child: ClipRect(
               child: Container(
                 height: ovalHeight,
@@ -90,64 +87,6 @@ class LoadScreen extends StatelessWidget {
           ),
         ],
       ),
-
-      /*
-      Center(
-        child: ClipRect(
-          child: Container(
-            height: ovalHeight,
-            width: ovalWidth,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.elliptical((ovalWidth), (ovalWidth / 3)),
-                  bottomLeft: Radius.elliptical((ovalWidth), (ovalWidth / 3)),
-                  bottomRight: Radius.elliptical((ovalWidth), (ovalWidth / 3)),
-                  topRight: Radius.elliptical((ovalWidth), (ovalWidth / 3))),
-            ),
-            child: image,
-          ),
-        ),
-      ),*/
-
-/*
-      ClipRect(
-        child: Container(
-          height: ovalHeight,
-          width: ovalWidth,
-          padding: EdgeInsets.only(top: ovalHeight*0.15, bottom: 30.0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.elliptical((ovalWidth), (ovalWidth / 3)),
-                bottomLeft:
-                Radius.elliptical((ovalWidth), (ovalWidth / 3)),
-                bottomRight:
-                Radius.elliptical((ovalWidth), (ovalWidth / 3)),
-                topRight:
-                Radius.elliptical((ovalWidth), (ovalWidth / 3))),
-          ),
-          child: Column(
-            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text(
-                'WELCOME TO',
-                style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 24),
-              ),
-              Text(
-                'squatting',
-                style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 65),
-              ),
-              Text(
-                'Rest in squat position for 30\nminutes each day to increase\nhip, ankle and back mobility. ',
-                style: TextStyle(color: textColor, fontSize: 20),
-              ),
-            ],
-          ),
-        ),
-      ),
-
-      */
     );
   }
 }

@@ -11,18 +11,21 @@ history() {
   List historySum = <Widget>[];
   allSquats['squats'].forEach((k, v) {
     testList.add(k);
-    historyView.add(Text(k, style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 18.0)));
+    historyView.add(Text(k,
+        style: TextStyle(
+            color: textColor, fontWeight: FontWeight.bold, fontSize: 18.0)));
   });
 
   historyView.sort((a, b) => b.data.compareTo(a.data));
-  testList.sort((a,b) => b.compareTo(a));
+  testList.sort((a, b) => b.compareTo(a));
 
   testList.forEach((f) {
     DateTime date = DateTime.parse(f);
-   String formattedDate = DateFormat('MMMMd').format(date);
-    writtenDateView.add(Text(formattedDate, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)));
+    String formattedDate = DateFormat('MMMMd').format(date);
+    writtenDateView.add(Text(formattedDate,
+        style: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)));
   });
-
 
   historyView.forEach((f) {
     historySumDouble.add(sumSquats(f.data) / 30);
@@ -32,7 +35,12 @@ history() {
     shrinkWrap: true,
     itemCount: historyView.length,
     itemBuilder: (BuildContext context, int index) {
-      historySum.add(Text(sumSquats(historyView[index].data).toString() + ' min', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)));
+      historySum.add(Text(
+          sumSquats(historyView[index].data).toString() + ' min',
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0)));
       double fullWidth = MediaQuery.of(context).size.width;
       double squatPercentageWidth;
       if ((fullWidth * historySumDouble[index]) > fullWidth) {

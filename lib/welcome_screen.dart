@@ -20,10 +20,10 @@ class WelcomeScreen extends StatelessWidget {
     double bottomPosition;
     if (screenHeight < 800) {
       ovalHeight = 300.0;
-      bottomPosition = (screenHeight/2)-150.0;
-    }else {
+      bottomPosition = (screenHeight / 2) - 150.0;
+    } else {
       ovalHeight = ((screenHeight * 0.70) / 2);
-      bottomPosition = (screenHeight - ovalHeight)/2;
+      bottomPosition = (screenHeight - ovalHeight) / 2;
     }
     double ovalWidth = screenWidth * 2;
     Size buttonSize = Size(200, 80);
@@ -38,12 +38,11 @@ class WelcomeScreen extends StatelessWidget {
           Positioned(
             bottom: bottomPosition,
             left: -(screenWidth / 2),
-
             child: ClipRect(
               child: Container(
                 height: ovalHeight,
                 width: ovalWidth,
-                padding: EdgeInsets.only(top: ovalHeight*0.15, bottom: 30.0),
+                padding: EdgeInsets.only(top: ovalHeight * 0.15, bottom: 30.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -59,11 +58,17 @@ class WelcomeScreen extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       'WELCOME TO',
-                      style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 24),
+                      style: TextStyle(
+                          color: textColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24),
                     ),
                     Text(
                       'squatting',
-                      style: TextStyle(color: textColor, fontWeight: FontWeight.bold, fontSize: 65),
+                      style: TextStyle(
+                          color: textColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 65),
                     ),
                     Text(
                       'Rest in squat position for 30\nminutes each day to increase\nhip, ankle and back mobility. ',
@@ -76,7 +81,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
           Positioned(
             left: screenWidth / 2 - (buttonSize.width / 2),
-            bottom: bottomPosition - (buttonSize.height/2),
+            bottom: bottomPosition - (buttonSize.height / 2),
             child: SizedBox(
               height: buttonSize.height,
               width: buttonSize.width,
@@ -86,10 +91,9 @@ class WelcomeScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(18))),
                 onPressed: () {
-                  // TODO: unhide set visited for welcome screen to only be visible firts time
+                  // TODO: unhide set visited for welcome screen to only be visible first time
                   //setVisited();
-                  allSquats['squats'][today] = [
-                  ];
+                  allSquats['squats'][today] = [];
                   historyList();
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MainScreen()));

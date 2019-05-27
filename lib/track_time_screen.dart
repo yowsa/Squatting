@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'stopwatch_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'time_picker_widget.dart';
-import 'package:squat_mobility/routes_widget.dart';
 import 'package:squat_mobility/design_elements.dart';
 
 class ModalSheet extends StatefulWidget {
@@ -51,7 +50,6 @@ class StatefulScreenState extends State<StatefulWidget> {
   Color timerButtonTextColor = Colors.white;
   Color timerSplashColor = accentColor;
 
-
   Color timePickerButtonColor = Colors.white;
   Color timePickerButtonTextColor = textColor;
   Color timePickerSplashColor = Colors.transparent;
@@ -71,7 +69,6 @@ class StatefulScreenState extends State<StatefulWidget> {
         timePickerSplashColor = accentColor;
         timerButtonElevation = 3.0;
         timePickerButtonElevation = 0.0;
-
       } else {
         timerState = true;
         timePickerState = false;
@@ -222,24 +219,9 @@ class Modal {
         context: context,
         builder: (BuildContext context) {
           return Container(
-            // TODO: Make flexible height based on screen
             height: (screenHeight * 0.45),
             child: StatefulScreen(),
           );
-
-          /*Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Expanded(
-                child: StatefulScreen(),
-              )
-            ],
-          );*/
         });
   }
 }
-/*
-stateChange() {
-  bool state = false;
-  print(state);
-}*/

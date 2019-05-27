@@ -18,7 +18,6 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
   var value; // = sumSquats(today).toDouble();
   var valueMin; // Minute value of todays squats
   var valueMinLeft; // Minutes left to squat today
-  // var value2 = SquatsCircularChartState();
 
   SquatsCircularChartState() {
     today = DateTime.now().toString().substring(0, 10);
@@ -47,8 +46,7 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
           dialColor,
           rankKey: 'percentage',
         ),
-      ], rankKey: 'percentage'
-      ),
+      ], rankKey: 'percentage'),
     ];
     return data;
   }
@@ -58,7 +56,6 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
       return '$valueMinLeft out of $goal minutes left';
     } else {
       return 'You have reached your goal for today';
-
     }
   }
 
@@ -75,13 +72,10 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
     );
     return Column(
       children: <Widget>[
-        //Padding(
-          //padding: EdgeInsets.only(top: screenHeight/5),
-        //  child:
-          Container(
-            height: chartBox,
-            width: screenWidth,
-            child: Stack(
+        Container(
+          height: chartBox,
+          width: screenWidth,
+          child: Stack(
             children: <Widget>[
               Align(
                 alignment: Alignment(0.0, 0.0),
@@ -97,7 +91,6 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
               Align(
                 alignment: Alignment(0.0, 0.0),
                 child: AnimatedCircularChart(
-
                   key: _chartKey,
                   size: _chartSize,
                   initialChartData: _generateChartData(value),
@@ -113,12 +106,10 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
                 ),
               ),
             ],
-    ),
           ),
-        //),
-        
+        ),
         Container(
-          height: screenHeight*0.06,
+          height: screenHeight * 0.06,
           alignment: Alignment.center,
           child: Text(
             chartText(),
