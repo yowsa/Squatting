@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'save_squats.dart';
+import 'package:squat_mobility/save_squats.dart';
 import 'package:squat_mobility/design_elements.dart';
 
 class TimerPickerWidget extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'save_squats.dart';
+import 'package:squat_mobility/save_squats.dart';
 import 'package:intl/intl.dart';
 import 'package:squat_mobility/design_elements.dart';
 

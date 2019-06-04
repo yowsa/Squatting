@@ -51,6 +51,14 @@ class StopwatchTimer {
   setCallback(cb) {
     this.callback = cb;
   }
+
+  isRunning() {
+    if (myStopwatch.isRunning) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 //TODO: test section, this would be what goes into the actual app using the timer

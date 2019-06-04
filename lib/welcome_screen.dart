@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:squat_mobility/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:squat_mobility/design_elements.dart';
 import 'package:squat_mobility/save_squats.dart';
@@ -92,7 +92,7 @@ class WelcomeScreen extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(18))),
                 onPressed: () {
                   // TODO: unhide set visited for welcome screen to only be visible first time
-                  //setVisited();
+                  setVisited();
                   allSquats['squats'][today] = [];
                   historyList();
                   Navigator.push(context,

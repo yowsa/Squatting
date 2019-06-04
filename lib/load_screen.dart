@@ -37,7 +37,7 @@ void main() async {
 class LoadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var backgroundLogo = AssetImage('assets/dark-logo.png');
+    var backgroundLogo = AssetImage('assets/light-logo-big.png');
     var image = Image(
       image: backgroundLogo,
       width: 300.0,
@@ -85,6 +85,7 @@ class LoadScreen extends StatelessWidget {
               ),
             ),
           ),
+          Center(child: Text('squatting', style: TextStyle(fontSize: 65, fontWeight: FontWeight.bold, color: textColor),)),
         ],
       ),
     );

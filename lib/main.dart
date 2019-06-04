@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'info_screen.dart';
-import 'history_screen.dart';
-import 'track_time_screen.dart';
-import 'squats_today_widget.dart';
-import 'design_elements.dart';
+import 'package:squat_mobility/info_screen.dart';
+import 'package:squat_mobility/history_screen.dart';
+import 'package:squat_mobility/track_time_screen.dart';
+import 'package:squat_mobility/squats_today_widget.dart';
+import 'package:squat_mobility/design_elements.dart';
+
 
 final chartKey = GlobalKey<SquatsCircularChartState>();
 
@@ -60,24 +61,6 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               Align(
-                alignment: Alignment(-0.5, 0),
-                child: SizedBox(
-                  height: (screenWidth / 6),
-                  width: (screenWidth / 6),
-                  child: FloatingActionButton(
-                    heroTag: 3,
-                    backgroundColor: mainColor,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => InfoScreen()));
-                    },
-                    child: Icon(Icons.info),
-                  ),
-                ),
-              ),
-              Align(
                 alignment: Alignment(0.5, 0.0),
                 child: SizedBox(
                   height: (screenWidth / 6),
@@ -95,6 +78,25 @@ class MainScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              Align(
+                alignment: Alignment(-0.5, 0),
+                child: SizedBox(
+                  height: (screenWidth / 6),
+                  width: (screenWidth / 6),
+                  child: FloatingActionButton(
+                    heroTag: 3,
+                    backgroundColor: mainColor,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => InfoScreen()));
+                    },
+                    child: Icon(Icons.info),
+                  ),
+                ),
+              ),
+
             ],
           ),
         ],

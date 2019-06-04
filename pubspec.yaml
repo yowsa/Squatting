@@ -53,6 +53,7 @@ flutter:
     - assets/form-hold-on.jpg
     - assets/squat-good-form.jpg
     - assets/light-logo.png
+    - assets/light-logo-big.png
     - assets/dark-logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

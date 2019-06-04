@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'stopwatch_timer_class.dart';
+import 'package:squat_mobility/stopwatch_timer_class.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:squat_mobility/save_squats.dart';
 import 'package:squat_mobility/design_elements.dart';
@@ -20,6 +20,19 @@ class StopwatchState extends State<StopwatchWidget> {
     setState(() {
       _time = testTimer.stopwatchPrint();
     });
+  }
+
+  @protected
+  @mustCallSuper
+  void dispose() {
+    super.dispose();
+    timerRunning();
+  }
+
+  timerRunning() {
+    if (testTimer.isRunning()){
+      testTimer.stopwatchStop();
+    }
   }
 
   @override
@@ -93,6 +106,7 @@ class StopwatchState extends State<StopwatchWidget> {
             child: RaisedButton(
               onPressed: () {
                 Navigator.pop(context);
+                testTimer.stopwatchStop();
                 addSquat(testTimer.stopwatchValue());
                 testTimer.stopwatchReset();
               },

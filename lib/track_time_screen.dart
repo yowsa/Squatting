@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'stopwatch_widget.dart';
+import 'package:squat_mobility/stopwatch_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'time_picker_widget.dart';
+import 'package:squat_mobility/time_picker_widget.dart';
 import 'package:squat_mobility/design_elements.dart';
 
 class ModalSheet extends StatefulWidget {
@@ -212,7 +212,7 @@ class StatefulScreenState extends State<StatefulWidget> {
 }
 
 class Modal {
-  bool state = true;
+  //bool state = true;
   mainBottomSheet(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     showModalBottomSheet(
