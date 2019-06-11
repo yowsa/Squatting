@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
 
 Future<void> sleep() async {
-  return Future.delayed(Duration(seconds: 6));
+  return Future.delayed(Duration(seconds: 3));
 }
 
 void main() async {

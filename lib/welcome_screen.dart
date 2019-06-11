@@ -95,6 +95,7 @@ class WelcomeScreen extends StatelessWidget {
                   setVisited();
                   allSquats['squats'][today] = [];
                   historyList();
+                  saveSquats();
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MainScreen()));
                 },

@@ -88,6 +88,7 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
                   ),
                 ),
               ),
+
               Align(
                 alignment: Alignment(0.0, 0.0),
                 child: AnimatedCircularChart(
@@ -95,7 +96,7 @@ class SquatsCircularChartState extends State<SquatsCircularChartWidget> {
                   size: _chartSize,
                   initialChartData: _generateChartData(value),
                   chartType: CircularChartType.Radial,
-                  edgeStyle: SegmentEdgeStyle.round,
+                  //edgeStyle: SegmentEdgeStyle.round,
                   percentageValues: true,
                   holeLabel: '$valueMin' + ' min',
                   labelStyle: TextStyle(

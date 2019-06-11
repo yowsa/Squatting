@@ -77,7 +77,7 @@ addSquat(squatValue) {
   delayedCircularChartAnimation();
 
   // if I want to remove a date, use the code below
-  // allSquats['squats'].remove('2019-04-10');
+  //allSquats['squats'].remove('2019-06-04');
 
 //If you want to add a date with value use code below
 

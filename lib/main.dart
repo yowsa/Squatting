@@ -4,12 +4,13 @@ import 'package:squat_mobility/history_screen.dart';
 import 'package:squat_mobility/track_time_screen.dart';
 import 'package:squat_mobility/squats_today_widget.dart';
 import 'package:squat_mobility/design_elements.dart';
-
+import 'package:flutter/rendering.dart';
 
 final chartKey = GlobalKey<SquatsCircularChartState>();
 
 class MainScreen extends StatelessWidget {
   final String today = DateTime.now().toString().substring(0, 10);
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -96,7 +97,6 @@ class MainScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
             ],
           ),
         ],

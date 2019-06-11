@@ -39,8 +39,10 @@ class StopwatchTimer {
 
   // stops the timer
   stopwatchStop() {
-    myStopwatch.stop();
-    timer.cancel();
+    if (myStopwatch.isRunning) {
+      myStopwatch.stop();
+      timer.cancel();
+    }
   }
 
   stopwatchReset() {

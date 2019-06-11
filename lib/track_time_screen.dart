@@ -48,11 +48,11 @@ class StatefulScreenState extends State<StatefulWidget> {
   bool timePickerState = false;
   Color timerButtonColor = mainColor;
   Color timerButtonTextColor = Colors.white;
-  Color timerSplashColor = accentColor;
+  Color timerSplashColor = Colors.transparent;
 
   Color timePickerButtonColor = Colors.white;
   Color timePickerButtonTextColor = textColor;
-  Color timePickerSplashColor = Colors.transparent;
+  Color timePickerSplashColor = accentColor;
   double timerButtonElevation = 0.0;
   double timePickerButtonElevation = 3.0;
 
@@ -63,10 +63,10 @@ class StatefulScreenState extends State<StatefulWidget> {
         timePickerState = true;
         timerButtonColor = Colors.white;
         timerButtonTextColor = textColor;
-        timerSplashColor = Colors.transparent;
+        timerSplashColor = accentColor;
         timePickerButtonColor = mainColor;
         timePickerButtonTextColor = Colors.white;
-        timePickerSplashColor = accentColor;
+        timePickerSplashColor = Colors.transparent;
         timerButtonElevation = 3.0;
         timePickerButtonElevation = 0.0;
       } else {
@@ -75,10 +75,10 @@ class StatefulScreenState extends State<StatefulWidget> {
 
         timerButtonColor = mainColor;
         timerButtonTextColor = Colors.white;
-        timerSplashColor = accentColor;
+        timerSplashColor = Colors.transparent;
         timePickerButtonColor = Colors.white;
         timePickerButtonTextColor = textColor;
-        timePickerSplashColor = Colors.transparent;
+        timePickerSplashColor = accentColor;
         timerButtonElevation = 0.0;
         timePickerButtonElevation = 3.0;
       }
