@@ -15,7 +15,7 @@ void main() async {
   final prefs = await SharedPreferences.getInstance();
 
   final newUser = prefs.getBool('newUser') ?? true;
-  // TODO: remove line below so the saved prefs for welcome screen doesn't reset every other time
+  // to reset "new User" run code below
   //prefs.remove('newUser');
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
@@ -85,7 +85,12 @@ class LoadScreen extends StatelessWidget {
               ),
             ),
           ),
-          Center(child: Text('squatting', style: TextStyle(fontSize: 65, fontWeight: FontWeight.bold, color: textColor),)),
+          Center(
+              child: Text(
+            'squatting',
+            style: TextStyle(
+                fontSize: 65, fontWeight: FontWeight.bold, color: textColor),
+          )),
         ],
       ),
     );

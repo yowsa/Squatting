@@ -91,7 +91,6 @@ class WelcomeScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(18))),
                 onPressed: () {
-                  // TODO: unhide set visited for welcome screen to only be visible first time
                   setVisited();
                   allSquats['squats'][today] = [];
                   historyList();

@@ -63,6 +63,5 @@ class StopwatchTimer {
   }
 }
 
-//TODO: test section, this would be what goes into the actual app using the timer
 
 var testTimer = StopwatchTimer();
