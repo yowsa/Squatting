@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import 'package:squat_mobility/main.dart';
+import 'package:squat_mobility/main_screen.dart';
 import 'dart:async';
 
 // Global variable that holds all squats (dict/map)

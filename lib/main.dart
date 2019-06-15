@@ -1,104 +1,97 @@
 import 'package:flutter/material.dart';
-import 'package:squat_mobility/info_screen.dart';
+import 'package:squat_mobility/save_squats.dart';
+import 'package:squat_mobility/welcome_screen.dart';
+import 'package:squat_mobility/main_screen.dart';
 import 'package:squat_mobility/history_screen.dart';
-import 'package:squat_mobility/track_time_screen.dart';
-import 'package:squat_mobility/squats_today_widget.dart';
 import 'package:squat_mobility/design_elements.dart';
-import 'package:flutter/rendering.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart';
+import 'dart:async';
 
-final chartKey = GlobalKey<SquatsCircularChartState>();
+Future<void> sleep() async {
+  return Future.delayed(Duration(seconds: 3));
+}
 
-class Main extends StatelessWidget {
-  final String today = DateTime.now().toString().substring(0, 10);
+void main() async {
+  final prefs = await SharedPreferences.getInstance();
 
+  final newUser = prefs.getBool('newUser') ?? true;
+  // to reset "new User" run code below
+  //prefs.remove('newUser');
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MaterialApp(title: 'Load Screen', home: LoadScreen()));
+  });
+
+  await loadSquats();
+  if (newUser == false) {
+    historyList();
+  }
+
+  await sleep();
+
+  newUser
+      ? runApp(MaterialApp(title: 'Navigation Basics', home: WelcomeScreen()))
+      : runApp(MaterialApp(title: 'Navigation Basics', home: Main()));
+}
+
+class LoadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var backgroundLogo = AssetImage('assets/light-logo-big.png');
+    var image = Image(
+      image: backgroundLogo,
+      width: 300.0,
+      height: 300.0,
+    );
+
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    double ovalHeight = ((screenHeight * 0.50) / 2) - 30.0;
     double ovalWidth = screenWidth * 2;
-    var circularChart = SquatsCircularChartWidget(key: chartKey);
+    double ovalHeight = (screenHeight * 0.70) / 2;
+    if (screenHeight < 700) {
+      ovalHeight = 300.0;
+    } else {
+      ovalHeight = ((screenHeight * 0.70) / 2);
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Column(
+      body: Stack(
         children: <Widget>[
           Container(
-            height: screenHeight * 0.75,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Container(
-                  child: circularChart,
+            width: screenWidth,
+            height: screenHeight,
+          ),
+          Positioned(
+            top: (screenHeight - ovalHeight) / 2,
+            left: -(screenWidth / 2),
+            child: ClipRect(
+              child: Container(
+                height: ovalHeight,
+                width: ovalWidth,
+                padding: EdgeInsets.only(top: ovalHeight * 0.15, bottom: 30.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.elliptical((ovalWidth), (ovalWidth / 3)),
+                      bottomLeft:
+                          Radius.elliptical((ovalWidth), (ovalWidth / 3)),
+                      bottomRight:
+                          Radius.elliptical((ovalWidth), (ovalWidth / 3)),
+                      topRight:
+                          Radius.elliptical((ovalWidth), (ovalWidth / 3))),
                 ),
-                Container(
-                  height: 60.0,
-                  child: ModalSheet(),
-                ),
-              ],
+                child: image,
+              ),
             ),
           ),
-          Stack(
-            children: <Widget>[
-              Container(
-                height: (screenHeight / 4),
-                width: screenWidth,
-              ),
-              Positioned(
-                bottom: 0.0,
-                left: -(screenWidth / 2),
-                child: ClipRect(
-                  child: Container(
-                    height: ovalHeight,
-                    width: ovalWidth,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft:
-                              Radius.elliptical((ovalWidth), (ovalWidth / 3)),
-                          topRight:
-                              Radius.elliptical((ovalWidth), (ovalWidth / 3))),
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment(0.5, 0.0),
-                child: SizedBox(
-                  height: (screenWidth / 6),
-                  width: (screenWidth / 6),
-                  child: FloatingActionButton(
-                    heroTag: 2,
-                    backgroundColor: mainColor,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HistoryScreen()));
-                    },
-                    child: Icon(Icons.assessment),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment(-0.5, 0),
-                child: SizedBox(
-                  height: (screenWidth / 6),
-                  width: (screenWidth / 6),
-                  child: FloatingActionButton(
-                    heroTag: 3,
-                    backgroundColor: mainColor,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => InfoScreen()));
-                    },
-                    child: Icon(Icons.info),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          Center(
+              child: Text(
+            'squatting',
+            style: TextStyle(
+                fontSize: 65, fontWeight: FontWeight.bold, color: textColor),
+          )),
         ],
       ),
     );
