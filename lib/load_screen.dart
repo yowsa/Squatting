@@ -6,6 +6,7 @@ import 'package:squat_mobility/history_screen.dart';
 import 'package:squat_mobility/design_elements.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
+import 'dart:async';
 
 Future<void> sleep() async {
   return Future.delayed(Duration(seconds: 3));
@@ -31,7 +32,7 @@ void main() async {
 
   newUser
       ? runApp(MaterialApp(title: 'Navigation Basics', home: WelcomeScreen()))
-      : runApp(MaterialApp(title: 'Navigation Basics', home: MainScreen()));
+      : runApp(MaterialApp(title: 'Navigation Basics', home: Main()));
 }
 
 class LoadScreen extends StatelessWidget {

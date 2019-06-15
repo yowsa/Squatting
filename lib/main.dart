@@ -8,7 +8,7 @@ import 'package:flutter/rendering.dart';
 
 final chartKey = GlobalKey<SquatsCircularChartState>();
 
-class MainScreen extends StatelessWidget {
+class Main extends StatelessWidget {
   final String today = DateTime.now().toString().substring(0, 10);
 
   @override
