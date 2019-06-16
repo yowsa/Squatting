@@ -17,7 +17,7 @@ void main() async {
 
   final newUser = prefs.getBool('newUser') ?? true;
   // to reset "new User" run code below
-  //prefs.remove('newUser');
+  prefs.remove('newUser');
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(MaterialApp(title: 'Load Screen', home: LoadScreen()));
@@ -31,8 +31,8 @@ void main() async {
   await sleep();
 
   newUser
-      ? runApp(MaterialApp(title: 'Navigation Basics', home: WelcomeScreen()))
-      : runApp(MaterialApp(title: 'Navigation Basics', home: Main()));
+      ? runApp(MaterialApp(debugShowCheckedModeBanner: false, title: 'Navigation Basics', home: WelcomeScreen()))
+      : runApp(MaterialApp( debugShowCheckedModeBanner: false,title: 'Navigation Basics', home: Main()));
 }
 
 class LoadScreen extends StatelessWidget {
