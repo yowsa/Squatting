@@ -8,7 +8,7 @@ class InfoScreen extends StatelessWidget {
         backgroundColor: backgroundColor,
         appBar: AppBar(
           backgroundColor: menuColor,
-          title: Text('Info Screen'),
+          title: Text('Info'),
         ),
         body: ListView(
           children: <Widget>[

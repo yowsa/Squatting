@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:squat_mobility/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:squat_mobility/design_elements.dart';
-import 'package:squat_mobility/save_squats.dart';
-import 'package:squat_mobility/history_screen.dart';
 import 'dart:async';
 
 Future<void> setVisited() async {

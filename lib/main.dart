@@ -24,15 +24,11 @@ void main() async {
 
   await loadSquats();
   historyList();
- // if (newUser != true) {
- //   historyList();
-  //}
-
   await sleep();
 
   newUser == true
-      ? runApp(MaterialApp( title: 'Navigation Basics', home: WelcomeScreen()))
-      : runApp(MaterialApp( title: 'Navigation Basics', home: Main()));
+      ? runApp(MaterialApp( title: 'Squatting', home: WelcomeScreen()))
+      : runApp(MaterialApp( title: 'Squatting', home: Main()));
 }
 
 class LoadScreen extends StatelessWidget {
