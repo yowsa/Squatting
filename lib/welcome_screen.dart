@@ -87,15 +87,11 @@ class WelcomeScreen extends StatelessWidget {
               height: buttonSize.height,
               width: buttonSize.width,
               child: RaisedButton(
-                //padding: EdgeInsets.all(20),
                 color: mainColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(18))),
                 onPressed: () {
                   setVisited();
-                  allSquats['squats'][today] = [];
-                  historyList();
-                  saveSquats();
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Main()));
                 },

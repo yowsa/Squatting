@@ -109,6 +109,11 @@ history() {
 
 historyList() {
   var dateFormat = DateFormat('yyy-MM-dd');
+  final today = DateTime.now().toString().substring(0, 10);
+  if (!allSquats['squats'].containsKey(today)) {
+    allSquats['squats'][today] = [];
+    saveSquats();
+  }
 
   List<DateTime> dateList = <DateTime>[];
   allSquats['squats'].forEach((k, v) => dateList.add(DateTime.parse(k)));

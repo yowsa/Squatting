@@ -14,25 +14,25 @@ Future<void> sleep() async {
 
 void main() async {
   final prefs = await SharedPreferences.getInstance();
-
   final newUser = prefs.getBool('newUser') ?? true;
   // to reset "new User" run code below
-  prefs.remove('newUser');
+  //prefs.remove('newUser');
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(MaterialApp(title: 'Load Screen', home: LoadScreen()));
   });
 
   await loadSquats();
-  if (newUser == false) {
-    historyList();
-  }
+  historyList();
+ // if (newUser != true) {
+ //   historyList();
+  //}
 
   await sleep();
 
-  newUser
-      ? runApp(MaterialApp(debugShowCheckedModeBanner: false, title: 'Navigation Basics', home: WelcomeScreen()))
-      : runApp(MaterialApp( debugShowCheckedModeBanner: false,title: 'Navigation Basics', home: Main()));
+  newUser == true
+      ? runApp(MaterialApp( title: 'Navigation Basics', home: WelcomeScreen()))
+      : runApp(MaterialApp( title: 'Navigation Basics', home: Main()));
 }
 
 class LoadScreen extends StatelessWidget {
