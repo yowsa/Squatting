@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:squat_mobility/design_elements.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InfoScreen extends StatelessWidget {
   @override
@@ -102,6 +103,41 @@ class InfoScreen extends StatelessWidget {
                     InfoImage(imagePath: 'assets/form-feet-elevated.jpg'),
                   ],
                 )),
+            InfoSection(headline: 'CONTACT', bulletText: Column(
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(top: 7.0, right: 5.0),
+                    child: Icon(
+                      Icons.lens,
+                      size: 8.0,
+                      color: menuColor,
+                    ),
+                  ),
+                  GestureDetector( child: Text("Email us", style: TextStyle(color: textColor, fontSize: 18.0)), onTap:  () => launch('mailto:fundinapps@gmail.com?subject=Squatting'),),
+
+                ],
+            ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(top: 7.0, right: 5.0),
+                      child: Icon(
+                        Icons.lens,
+                        size: 8.0,
+                        color: menuColor,
+                      ),
+                    ),
+                    GestureDetector( child: Text("Privacy Policy", style: TextStyle(color: textColor, fontSize: 18.0),), onTap:  () => launch('http://www.josefin.fundin.com/apps/privacy_policy.html'),),
+                  ],
+                )
+
+
+              ],
+            ))
           ],
         ));
   }

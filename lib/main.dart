@@ -27,8 +27,8 @@ void main() async {
   await sleep();
 
   newUser == true
-      ? runApp(MaterialApp( title: 'Squatting', home: WelcomeScreen()))
-      : runApp(MaterialApp( title: 'Squatting', home: Main()));
+      ? runApp(MaterialApp( title: 'Squatting', debugShowCheckedModeBanner: false, home: WelcomeScreen()))
+      : runApp(MaterialApp( title: 'Squatting', debugShowCheckedModeBanner: false, home: Main()));
 }
 
 class LoadScreen extends StatelessWidget {
