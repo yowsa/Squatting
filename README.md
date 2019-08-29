@@ -1,17 +1,10 @@
-# Squat Mobility
+# Squatting
 
-A flutter application for squat mobility
+Squatting is a Flutter mobile app that tracks your daily time sitting in a resting squat position. Resting in a squat position each day can help increase mobility in your hips, ankles and back. The app includes instructions on how to properly sit relaxed in a squat position, as well as some useful tools if you’re having trouble.
 
-## Getting Started
+Time is tracked by either using the built in timer or by submitting time through the time picker, each submitted time section is then summed up to a daily total. In the history view you can look back to each day to see how many minutes you sat in a squat position that day.
 
-This project is a starting point for a Flutter application.
+- [View on App Store](https://apps.apple.com/app/id1473787981)
+- [View on Google Play Store](https://play.google.com/store/apps/details?id=com.josefinfundin.squatting&hl=en&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
 
